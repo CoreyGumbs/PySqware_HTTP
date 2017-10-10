@@ -9,16 +9,36 @@ Establishes Connection to Square API to allow access to store data for manipulat
 
 import os
 import json
-from http import client
+import http.client as httplib
+import squareconnect
+from sqware.secrets import get_secrets
 
-#Globals for connecting to Sqaure API
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ACCESS_TOKEN = 'sandbox-sq0atb-klNxv-KKF1pq1He5DzJ-Lg'
 
 class Sq_Connect(object):
 	def __init__(self):
 		'''constructor for class'''
-		self.access_token = ACCESS_TOKEN
+		self.access_token = get_secrets('ACCESS_TOKEN')
+		self.application_id = get_secrets('APPLICATION_ID')
+		self.location_id = get_secrets('LOCATION_ID')
+		self.request_headers = {
+			'Authorization': 'Bearer ' + self.access_token,
+			'Accept':        'application/json',
+			'Content-Type':  'application/json'
+			}
 
-	def establish(self):
-		return self.access_token
+	def connect_api(self, request_path):
+		conn = httplib	.HTTPSConnection('connect.squareup.com')
+		conn.request('GET', request_path, '', self.request_headers)
+		response = conn.getresponse()
+		data = json.loads(response.read())
+		return json.dumps(data, indent=2, separators=(',',': '))
+
+	
+
+a = Sq_Connect()
+
+a.connect_api('/v2/catalog/object/')
+
+
+
+

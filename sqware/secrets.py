@@ -9,14 +9,21 @@ Establishes Connection to Square API to allow access to store data for manipulat
 import os
 import json
 
-
-#Globals
+	
+#Global Paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 security_key = os.path.join(BASE_DIR, 'secrets.json')
 
-print(BASE_DIR, security_key)
+def get_secrets(setting):
+	try:
+		with open(security_key) as f:
+			secrets = json.loads(f.read())
+		return secrets[setting]
+	except KeyError:
+		return 'Variable not found. Please check json file and set the {0} environment variable.'.format(setting)
 
 
-with open(security_key) as f:
-	secrets = json.loads(f.read())
-	print(secrets['ACCESS_TOKEN'])
+
+
+
+
