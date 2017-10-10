@@ -9,6 +9,7 @@ Establishes Connection to Square API to allow access to store data for manipulat
 
 import os
 import json
+import requests
 import http.client as httplib
 import squareconnect
 from sqware.secrets import get_secrets
@@ -27,17 +28,18 @@ class Sq_Connect(object):
 			}
 
 	def connect_api(self, request_path):
-		conn = httplib	.HTTPSConnection('connect.squareup.com')
-		conn.request('GET', request_path, '', self.request_headers)
-		response = conn.getresponse()
-		data = json.loads(response.read())
-		return json.dumps(data, indent=2, separators=(',',': '))
+		#create connection to Square API using Requests library
+		#Uses custom header parameter to pass  requireed square api headers
+		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers)
+
+		#returns request opject
+		return sq_connection
 
 	
 
 a = Sq_Connect()
 
-a.connect_api('/v2/catalog/object/')
+print(a.connect_api('/v2/locations'))
 
 
 

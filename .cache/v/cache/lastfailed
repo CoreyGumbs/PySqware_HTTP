@@ -1,7 +1,6 @@
 {
   "tests/test_sqware_connect.py::Test_Sq_Conncect::()": true,
   "tests/test_sqware_connect.py::Test_Sq_Conncect::()::test_establish_func": true,
-  "tests/test_sqware_connect.py::Test_Sq_Connect::()": true,
   "tests/test_sqware_connect.py::Test_Sq_Connect::()::test_api_connection": true,
   "tests/test_sqware_connect.py::Test_Sq_Connect::()::test_establish_connection": true,
   "tests/test_sqware_connect.py::Test_Sq_Connect::()::test_establish_func": true,
