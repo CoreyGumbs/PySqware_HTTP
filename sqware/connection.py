@@ -31,10 +31,12 @@ class Sq_Connect(object):
 		#create connection to Square API using Requests library
 		#Uses custom header parameter to pass  requireed square api headers
 		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers)
-
-		#returns request opject
-		return sq_connection
 		
+		#returns response object
+		return sq_connection		
+	
+			
+
 
 
 

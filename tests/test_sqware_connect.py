@@ -30,12 +30,13 @@ class Test_Sq_Connect(object):
 		#Establish connection to square api
 		#returns response object that uses Requests module api
 		locations = self.sq_connect.connect_api('/v2/locations')
-
 		#checks for https connection to square api
 		assert locations.status_code == 200
 
 		#checks for correct url path
-		assert locations.url == ' https://connect.squareup.com/v2/locations'
+		assert locations.url == 'https://connect.squareup.com/v2/locations'
+
+
 
 	
 
