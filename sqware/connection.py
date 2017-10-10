@@ -34,12 +34,7 @@ class Sq_Connect(object):
 
 		#returns request opject
 		return sq_connection
-
-	
-
-a = Sq_Connect()
-
-print(a.connect_api('/v2/locations'))
+		
 
 
 
