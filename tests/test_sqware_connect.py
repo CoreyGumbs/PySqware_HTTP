@@ -30,11 +30,28 @@ class Test_Sq_Connect(object):
 		#Establish connection to square api
 		#returns response object that uses Requests module api
 		locations = self.sq_connect.connect_api('/v2/locations')
+	
 		#checks for https connection to square api
-		assert locations.status_code == 200
+		assert locations.status_code == requests.codes.ok
 
 		#checks for correct url path
 		assert locations.url == 'https://connect.squareup.com/v2/locations'
+
+	def test_api_connection_error_exceptions(self):
+		'''
+		Test the error exceptions of sq_connect().
+		'''
+		locations = self.sq_connect.connect_api('/v2/locations/')
+		
+		assert locations == ''
+
+### have to test exceptions using pytest.. but traceback not reading 
+
+
+
+
+
+##NEED TO TEST CONNECTION FAILURE/EXECEPTION FOR API CONNECTION
 
 
 
