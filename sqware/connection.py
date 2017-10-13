@@ -10,7 +10,6 @@ Establishes Connection to Square API to allow access to store data for manipulat
 import os
 import json
 import requests
-import http.client as httplib
 import squareconnect
 from sqware.secrets import get_secrets
 
@@ -31,11 +30,13 @@ class Sq_Connect(object):
 		#create connection to Square API using Requests library
 		#Uses custom header parameter to pass  requireed square api headers
 		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers)
-		
-		#returns response object
-		return sq_connection		
+		try:
+			sq_connection.raise_for_status()
+			return sq_connection	
+		except(requests.exceptions.HTTPError) as e:
+			return e
+
 	
-			
 
 
 
