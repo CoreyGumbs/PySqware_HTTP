@@ -27,6 +27,14 @@ class Sq_Connect(object):
 			}
 
 	def connect_api(self, request_path):
+		'''
+		Connects user to square api. 
+		
+		User adds endpoint path as per Square API documentation.
+		
+		ex: sq_connect.connect_api('/v2/locations')
+		'''
+		
 		#create connection to Square API using Requests library.
 		#Uses custom header parameter to pass  requireed square api headers.
 		#'timeout' parameter can be changed to desired time. See Requests docs (http://docs.python-requests.org/en/master/user/quickstart/#custom-headers).

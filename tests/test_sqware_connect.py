@@ -19,6 +19,7 @@ class Test_Sq_Connect(object):
 
 	@classmethod
 	def setup_class(cls):
+		#create class instance of Sq_Connect
 		cls.sq_connect = Sq_Connect()
 
 	def test_api_connection(self):
