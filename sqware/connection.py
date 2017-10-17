@@ -27,8 +27,9 @@ class Sq_Connect(object):
 			}
 
 	def connect_api(self, request_path):
-		#create connection to Square API using Requests library
-		#Uses custom header parameter to pass  requireed square api headers
+		#create connection to Square API using Requests library.
+		#Uses custom header parameter to pass  requireed square api headers.
+		#'timeout' argurment can be changed to desired time. See Requests docs (http://docs.python-requests.org/en/master/user/quickstart/#custom-headers).
 		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers, timeout=3)
 		try:
 			sq_connection.raise_for_status()
