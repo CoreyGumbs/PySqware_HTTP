@@ -4,6 +4,7 @@ A simple package that connects web applications to a Square Account via API that
 # Version 1.1.0
 written using Python 3
 
-New Addition:
 
-Added Sq_Connect class with a connect_api function for connection to Square api.
+Alt-H2 New Addition:
+====================
++ Added Sq_Connect class with a connect_api function for connection to Square api.
