@@ -7,6 +7,5 @@ Version 1.1.0
 written using Python 3
 
 
-### New Addition:
----
+#### New Addition(s):
 + Added Sq_Connect class with a connect_api function for connection to Square api.
