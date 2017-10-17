@@ -11,7 +11,7 @@ import json
 from sqware.connection import Sq_Connect
 
 #Test of Sq_Connect Module
-class Test_Sq_Connect(object):
+class Test_Sq_Connect_Api_Connection(object):
 	'''
 	Testing of the Sq_connect module. Currently uses the square sandbox application ID and Access Token.
 
