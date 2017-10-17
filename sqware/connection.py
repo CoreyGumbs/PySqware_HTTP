@@ -29,12 +29,12 @@ class Sq_Connect(object):
 	def connect_api(self, request_path):
 		#create connection to Square API using Requests library
 		#Uses custom header parameter to pass  requireed square api headers
-		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers)
+		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers, timeout=3)
 		try:
 			sq_connection.raise_for_status()
 			return sq_connection	
-		except(requests.exceptions.HTTPError) as e:
-			return e
+		except requests.exceptions.RequestException as e:
+			return str(e)
 
 	
 

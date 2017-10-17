@@ -41,17 +41,15 @@ class Test_Sq_Connect(object):
 		'''
 		Test the error exceptions of sq_connect().
 		'''
-		locations = self.sq_connect.connect_api('/v2/locations/')
-		
-		assert locations == ''
+		#returns string of HTTPError()
+		error_response_404 = self.sq_connect.connect_api('/v2/locations/')
+		error_response_500 = self.sq_connect.connect_api('/v5/locations')
 
-### have to test exceptions using pytest.. but traceback not reading 
+		#checks for common http errors.
+		assert error_response_404 == '404 Client Error: Not Found for url: https://connect.squareup.com/v2/locations/'
+		assert error_response_500 == '500 Server Error: Internal Server Error for url: https://connect.squareup.com/v5/locations'
 
 
-
-
-
-##NEED TO TEST CONNECTION FAILURE/EXECEPTION FOR API CONNECTION
 
 
 

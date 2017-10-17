@@ -1,5 +1,4 @@
 {
-  "test_sqware_connect.py::Test_Sq_Connect::()::test_api_connection": true,
   "test_sqware_connect.py::Test_Sq_Connect::()::test_api_connection_error_exceptions": true,
   "test_sqware_connect.py::Test_Sq_Connect::()::test_api_connection_exception_msg": true
 }
