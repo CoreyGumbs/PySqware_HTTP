@@ -3,8 +3,7 @@ A simple package that connects web applications to a Square Account via API that
 
 Version 1.1.0
 -------------
-
-written using Python 3
+######Python 3
 
 
 #### New Addition(s):
