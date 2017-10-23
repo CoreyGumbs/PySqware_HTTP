@@ -33,8 +33,8 @@ class Test_Sq_Connect_Catalog(object):
 	def test_catalog_category_retrieval(self):
 		catalog = self.sq_category.retrieve_catalog_categories('/v2/catalog/list')
 
-		assert catalog[0]['category_data']['name'] == 'Smoothies'
-		assert catalog[1]['updated_at'] == '2017-08-21T19:28:04.357Z'
+		assert catalog[0]['name'] == 'Smoothies'
+		assert catalog[1]['updated'] == '2017-08-21T19:28:04.357Z'
 		assert catalog[2]['id'] == 'X5VKXVI6I2ZPBFF75YTDNNL2'
 
 
