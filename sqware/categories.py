@@ -39,11 +39,23 @@ class Sq_Catalog(object):
 		#Extracts catalog information from json object and creates key/value pairs
 		#can edit keys to include any category options needed.
 		for item in range(len(data)):
-			category_data[item] = { 'name': data[item]['category_data']['name'], 'id': data[item]['id'], 'updated': data[item]['updated_at']}
+			category_data[item] = { 
+				'name': data[item]['category_data']['name'], 
+				'id': data[item]['id'], 
+				'updated': data[item]['updated_at']
+				}
 
 		return category_data
 
-	def retrieve_category_items(self, category_keyword):
+	def retrieve_category_items(self, category_id):
 		'''
 		'''
-		catalog_endpoint = self.connect_catalog(request_path)
+		data = {
+			"query": [ 
+				"exact_query": category_id
+			]
+		}
+		post_data = self.connection.post('/v2/catalog/search', data)
+		#items_data = post_data.json()
+		#data = [item for item in items_data['objects']]
+		return post_data.json()

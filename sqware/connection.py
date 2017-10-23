@@ -30,7 +30,7 @@ class Sq_Connect(object):
 		'''
 		Connects user to square api. 
 		User adds endpoint path as per Square API documentation.
-		ex: sq_connect.connect_api('/v2/locations')
+		ex: sq_connect.get('/v2/locations')
 		'''
 
 		#create connection to Square API using Requests library.
@@ -45,6 +45,10 @@ class Sq_Connect(object):
 
 	
 	def post(self, request_path, data):
+		'''
+		Posts to Square API.
+		Must data parameter accepts json dictionaries.
+		'''
 		sq_connection = requests.post('https://connect.squareup.com' + request_path, headers = self.request_headers, json=data)
 		try: 
 			sq_connection.raise_for_status()
