@@ -1,4 +1,7 @@
 {
   "test_sqware_connect.py::Test_Sq_Connect::()::test_api_connection_exception_msg": true,
+  "test_sqware_connect_categories.py": true,
+  "test_sqware_connect_categories.py::Test_Sq_Connect_Catalog::()::test_catalog_api_connection": true,
+  "test_sqware_connect_categories.py::Test_Sq_Connect_Catalog::()::test_catalog_category_retrieval": true,
   "test_sqware_connect_categories.py::Test_Sq_Connect_Categories::()::test_api_connection": true
 }
