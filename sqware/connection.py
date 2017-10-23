@@ -26,7 +26,7 @@ class Sq_Connect(object):
 			'Content-Type':  'application/json'
 			}
 
-	def connect_api(self, request_path):
+	def get(self, request_path):
 		'''
 		Connects user to square api. 
 		User adds endpoint path as per Square API documentation.
@@ -44,7 +44,13 @@ class Sq_Connect(object):
 			return str(e)
 
 	
-
+	def post(self, request_path, data):
+		sq_connection = requests.post('https://connect.squareup.com' + request_path, headers = self.request_headers, json=data)
+		try: 
+			sq_connection.raise_for_status()
+			return sq_connection	
+		except requests.exceptions.RequestException as e:
+			return str(e)
 
 
 

@@ -9,6 +9,7 @@ import pytest
 import requests 
 import json
 from sqware.connection import Sq_Connect
+from sqware.categories import Sq_Catalog
 
 #Test of Sq_Connect Module
 class Test_Sq_Connect_Api_Connection(object):
@@ -21,6 +22,7 @@ class Test_Sq_Connect_Api_Connection(object):
 	def setup_class(cls):
 		#create class instance of Sq_Connect
 		cls.sq_connect = Sq_Connect()
+		cls.sq_catalog = Sq_Catalog()
 
 	def test_api_connection(self):
 		'''
@@ -30,7 +32,7 @@ class Test_Sq_Connect_Api_Connection(object):
 		'''
 		#Establish connection to square api
 		#returns response object that uses Requests module api
-		locations = self.sq_connect.connect_api('/v2/locations')
+		locations = self.sq_connect.get('/v2/locations')
 	
 		#checks for https connection to square api
 		assert locations.status_code == requests.codes.ok
@@ -43,12 +45,23 @@ class Test_Sq_Connect_Api_Connection(object):
 		Test the error exceptions of sq_connect().
 		'''
 		#returns string of HTTPError()
-		error_response_404 = self.sq_connect.connect_api('/v2/locations/')
-		error_response_500 = self.sq_connect.connect_api('/v5/locations')
+		error_response_404 = self.sq_connect.get('/v2/locations/')
+		error_response_500 = self.sq_connect.get('/v5/locations')
 
 		#checks for common http errors.
 		assert error_response_404 == '404 Client Error: Not Found for url: https://connect.squareup.com/v2/locations/'
 		assert error_response_500 == '500 Server Error: Internal Server Error for url: https://connect.squareup.com/v5/locations'
+
+	def test_api_post(self):
+		'''
+
+		'''
+		query_item = self.sq_catalog.retrieve_catalog_categories('/v2/catalog/list')
+		
+		posted = self.sq_connect.post('/v2/catalog/search', {'name' :query_item[0]['name']})
+		
+		assert query_item[0]['name'] == 'Smoothies'
+		assert posted.status_code == requests.codes.ok
 
 
 
