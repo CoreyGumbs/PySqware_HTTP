@@ -25,7 +25,7 @@ class Test_Sq_Connect_Catalog(object):
 		'''
 		Test for the categories list endpoint and connection.
 		'''
-		catalog = self.sq_category.retrieve_catalog_categories('/v2/catalog/list')
+		catalog = self.sq_category.connect_catalog('/v2/catalog/list')
 	
 		assert catalog.status_code == requests.codes.ok
 		assert catalog.url == 'https://connect.squareup.com/v2/catalog/list'
@@ -33,6 +33,6 @@ class Test_Sq_Connect_Catalog(object):
 	def test_catalog_category_retrieval(self):
 		catalog = self.sq_category.retrieve_catalog_categories('/v2/catalog/list')
 
-		assert catalog == {'objects': [{'catalog_v1_ids': [{'catalog_v1_id': 'cd346e2f-352c-48d6-b19b-1dc26ef1fa5c', 'location_id': '1R6PMMJ61ZW...63700dc60822a7b3b7543f0bb5a/original.png', 'label_color': '0b8000', ...}, 'present_at_all_locations': True, ...}, ...]}
+		assert catalog[0]['name'] == 'Smoothies'
 
 
