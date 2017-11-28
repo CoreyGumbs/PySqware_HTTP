@@ -19,6 +19,8 @@ class Sq_Connect(object):
 		'''constructor for class'''
 		self.access_token = get_secrets('ACCESS_TOKEN')
 		self.application_id = get_secrets('APPLICATION_ID')
+		#If multiple locations needed, add multiplelocation_id via incriments on secrets.json 
+		#(IE: location_id_2 = {{square location ID}})
 		self.location_id = get_secrets('LOCATION_ID')
 		self.request_headers = {
 			'Authorization': 'Bearer ' + self.access_token,

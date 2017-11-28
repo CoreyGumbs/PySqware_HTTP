@@ -8,6 +8,7 @@ Test of the SqWare package Sq_Connect Class.
 import pytest
 import requests 
 import json
+import timeit
 from sqware.categories import Sq_Catalog
 
 #Test of Sq_Connect Catagories Functionality
@@ -31,13 +32,13 @@ class Test_Sq_Connect_Catalog(object):
 		assert catalog.url == 'https://connect.squareup.com/v2/catalog/list'
 
 	def test_catalog_categories_retrieval(self):
-		catalog = self.sq_category.retrieve_catalog_categories('/v2/catalog/list')
+		#catalog class instance
+		#self.sq_category.location  calls the location_id that inherits from the Sq_Connect class constructor.
+		catalog = self.sq_category.retrieve_catalog_categories(self.sq_category.location)
 
 		assert catalog[0]['name'] == 'Smoothies'
-		assert catalog[1]['updated'] == '2017-08-21T19:28:04.357Z'
 		assert catalog[2]['id'] == 'X5VKXVI6I2ZPBFF75YTDNNL2'
 
-	def test_catalog_category_item_retrieval(self):
-		category_items = self.sq_category.retrieve_category_items('X5VKXVI6I2ZPBFF75YTDNNL2')
-		print(category_items)
+
+
 

@@ -9,53 +9,64 @@ Retrieve Categories, search for items in category, and returns items.
 
 import json
 import requests
+from collections import OrderedDict
 from sqware.connection import Sq_Connect
 
 
 class Sq_Catalog(object):
 	def __init__(self):
 		self.connection = Sq_Connect()
+		self.location = self.connection.location_id
 
 	def connect_catalog(self, request_path):
 		#establish connection to catalog endpoints
 		catalog_endpoint = self.connection.get(request_path)
 		return catalog_endpoint
 
-	def retrieve_catalog_categories(self, request_path):
+	def retrieve_catalog_categories(self, location_id):
 		'''
 		Retrieves categories from json data and returns them in a simple dictionary.
 		'''
 		#catalog list endpoint
-		catalog_endpoint = self.connect_catalog(request_path)
+		catalog_endpoint = self.connection.get('/v1/' + location_id + '/categories')
+		
 		#retrieves and decodes returned json data
 		catalog_data = catalog_endpoint.json()
-		#looks for catalog items with 'catalog_data' key and creates a list of json objects
-		#will still produce same results with queried endpoint url ("/v2/catalog/list?types=category")
-		data = [category for category in catalog_data['objects'] if 'category_data' in category]
+		
+		# return category_data
+		return catalog_data
 
-		#empty dictionary for category name, id, and updated key/value pairs
-		category_data = {}
-
-		#Extracts catalog information from json object and creates key/value pairs
-		#can edit keys to include any category options needed.
-		for item in range(len(data)):
-			category_data[item] = { 
-				'name': data[item]['category_data']['name'], 
-				'id': data[item]['id'], 
-				'updated': data[item]['updated_at']
-				}
-
-		return category_data
-
-	def retrieve_category_items(self, category_id):
+	def retrieve_category_items(self, category_id_num):
 		'''
 		'''
+		# data = {
+		# 	"object_types": [
+		# 		"ITEM"
+		# 	]
+		# }
 		data = {
-			"query": [ 
-				"exact_query": category_id
-			]
+			"object_ids": [category_id_num],
+			"include_related_objects": True
 		}
-		post_data = self.connection.post('/v2/catalog/search', data)
-		#items_data = post_data.json()
-		#data = [item for item in items_data['objects']]
-		return post_data.json()
+
+		post_data = self.connection.post('/v2/catalog/batch-retrieve', data)
+
+		items_data = post_data.json()
+		items = json.dumps(items_data, sort_keys=True, indent=4)
+		#test_run = json.loads(items_data, object_pairs_hook=OrderedDict)
+		#new_data = [x for x in items_data['objects']]
+		
+		category_item = {}
+		# for item in new_data:
+		# 	if item['id'] == category_id_num:
+		# 		print(item['id'], str("'"+category_id_num+"'"))
+		# 	else:
+		# 		 print(('there is no category with the id: {}').format({category_id_num}))
+		# 
+		print(items)
+
+	 
+
+
+
+
