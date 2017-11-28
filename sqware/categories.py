@@ -28,13 +28,13 @@ class Sq_Catalog(object):
 		Retrieves categories from json data and returns them in a simple dictionary.
 		'''
 		#catalog list endpoint
-		catalog_endpoint = self.connection.get('/v1/' + location_id + '/categories')
-		
+		category_endpoint = self.connection.get('/v1/' + location_id + '/categories')
+
 		#retrieves and decodes returned json data
-		catalog_data = catalog_endpoint.json()
+		category_data = category_endpoint.json()
 		
 		# return category_data
-		return catalog_data
+		return category_data
 
 	def retrieve_category_items(self, category_id_num):
 		'''
