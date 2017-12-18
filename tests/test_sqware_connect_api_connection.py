@@ -58,8 +58,7 @@ class Test_Sq_Connect_Api_Connection(object):
 		'''
 		query_item = self.sq_catalog.retrieve_catalog_categories('/v2/catalog/list')
 		
-		posted = self.sq_connect.post('/v2/catalog/search', {'id' :query_item[0]['id']})
-		print(posted)
+		posted = self.sq_connect.post('/v2/catalog/search', {'id':query_item[2]['id']})
 		
 		assert query_item[0]['name'] == 'Smoothies'
 		assert posted.status_code == requests.codes.ok
