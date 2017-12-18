@@ -42,14 +42,26 @@ class Sq_Catalog(object):
 		'''
 		#connects to square api
 		category_item_endpoint =  self.connection.get('/v2/catalog/list?types=item')
-		category_item_json = category_item_endpoint.json()
 		
-		#loops through json data and returns associated items.
-		for products in category_item_json['objects']:
-			for key, value in products['item_data'].items():
-				if cat_id == value:
-						return products
+		#decode JSON data
+		category_item_json = category_item_endpoint.json()
 
+		#products results list 
+		category_items = []
+
+		try:
+			#loops through json data and returns associated items.
+			for products in category_item_json['objects']:
+				for key, value in products['item_data'].items():
+					if cat_id == value:
+							category_items.append(products)
+
+			#if products are placed in list, returns list
+			if category_items:
+				return category_items
+		except:
+			#returns None if there are no products associated with cat_id
+			return None
 
 
 
