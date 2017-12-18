@@ -49,7 +49,7 @@ class Sq_Connect(object):
 	def post(self, request_path, data):
 		'''
 		Posts to Square API.
-		Must data parameter accepts json dictionaries.
+		Must incldu data parameter accepts json dictionaries.
 		'''
 		sq_connection = requests.post('https://connect.squareup.com' + request_path, headers = self.request_headers, json=data)
 		try: 

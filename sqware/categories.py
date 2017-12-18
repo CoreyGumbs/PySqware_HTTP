@@ -9,7 +9,7 @@ Retrieve Categories, search for items in category, and returns items.
 
 import json
 import requests
-from collections import OrderedDict
+from collections import defaultdict
 from sqware.connection import Sq_Connect
 
 
@@ -36,34 +36,23 @@ class Sq_Catalog(object):
 		# return category_data
 		return category_data
 
-	def retrieve_category_items(self, category_id_num):
+	def retrieve_category_items(self, cat_id):
 		'''
+		Filters items from JSON data associated with requested catalog id. 
 		'''
-		# data = {
-		# 	"object_types": [
-		# 		"ITEM"
-		# 	]
-		# }
-		data = {
-			"object_ids": [category_id_num],
-			"include_related_objects": True
-		}
-
-		post_data = self.connection.post('/v2/catalog/batch-retrieve', data)
-
-		items_data = post_data.json()
-		items = json.dumps(items_data, sort_keys=True, indent=4)
-		#test_run = json.loads(items_data, object_pairs_hook=OrderedDict)
-		#new_data = [x for x in items_data['objects']]
+		#connects to square api
+		category_item_endpoint =  self.connection.get('/v2/catalog/list?types=item')
+		category_item_json = category_item_endpoint.json()
 		
-		category_item = {}
-		# for item in new_data:
-		# 	if item['id'] == category_id_num:
-		# 		print(item['id'], str("'"+category_id_num+"'"))
-		# 	else:
-		# 		 print(('there is no category with the id: {}').format({category_id_num}))
-		# 
-		print(items)
+		try:
+			if category_item_endpoint.status_code == 200:
+				for products in category_item_json['objects']:
+					for key, value in products['item_data'].items():
+						if cat_id == value:
+							return products
+		except:
+			pass
+	
 
 	 
 
