@@ -1,1 +1,12 @@
 secrets.json
+*.pyc
+.cache
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+__pycache__/
