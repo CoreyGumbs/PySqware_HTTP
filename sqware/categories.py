@@ -9,7 +9,6 @@ Retrieve Categories, search for items in category, and returns items.
 
 import json
 import requests
-from collections import defaultdict
 from sqware.connection import Sq_Connect
 
 
@@ -38,20 +37,24 @@ class Sq_Catalog(object):
 
 	def retrieve_category_items(self, cat_id):
 		'''
-		Filters items from JSON data associated with requested catalog id. 
+		Filters items from JSON data associated with requested catalog id.
+		Will return None if wrong ID or no items associated with ID are returned.
 		'''
 		#connects to square api
 		category_item_endpoint =  self.connection.get('/v2/catalog/list?types=item')
 		category_item_json = category_item_endpoint.json()
 		
-		try:
-			if category_item_endpoint.status_code == 200:
-				for products in category_item_json['objects']:
-					for key, value in products['item_data'].items():
-						if cat_id == value:
-							return products
-		except:
-			pass
+		#loops through json data and returns associated items.
+		for products in category_item_json['objects']:
+			for key, value in products['item_data'].items():
+				if cat_id == value:
+						return products
+
+
+
+
+				
+	
 	
 
 	 
