@@ -35,21 +35,21 @@ class Sq_Catalog(object):
 		# return category_data
 		return category_data
 
-	def retrieve_category_items(self, cat_id):
+	def retrieve_category_items(self, cat_id, cat_name=None):
 		'''
 		Filters items from JSON data associated with requested catalog id.
 		Will return None if wrong ID or no items associated with ID are returned.
-		'''
-		#connects to square api
-		category_item_endpoint =  self.connection.get('/v2/catalog/list?types=item')
-		
-		#decode JSON data
-		category_item_json = category_item_endpoint.json()
-
-		#products results list 
-		category_items = []
-
+		'''	
 		try:
+			#connects to square api
+			print(cat_name)
+			category_item_endpoint =  self.connection.get('/v2/catalog/list?types=item')
+			
+			#decode JSON data
+			category_item_json = category_item_endpoint.json()
+
+			#products results list 
+			category_items = []
 			#loops through json data and returns associated items.
 			for products in category_item_json['objects']:
 				for key, value in products['item_data'].items():

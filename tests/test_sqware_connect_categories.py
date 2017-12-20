@@ -49,13 +49,15 @@ class Test_Sq_Connect_Catalog(object):
 		#catalog class instance
 		catalog = self.sq_category.retrieve_catalog_categories(self.sq_category.location)
 		#uses catalog id to retrieve items associated with it.
-		catalog_item = self.sq_category.retrieve_category_items(catalog[2]['id'])
+		catalog_item = self.sq_category.retrieve_category_items(catalog[2]['id'], catalog[2]['name'])
 		catalog_item_error = self.sq_category.retrieve_category_items('1EdSJSNRTKSSH')
+		print(catalog)
 
 		#test category id matches products category ids.
 		assert catalog[2]['id'] == catalog_item[1]['item_data']['category_id']
 
 		#test list item ids.
+		#assert catalog_item[0]['name'] == ''
 		assert catalog_item[0]['id'] == 'LSRV7KDOIE4YNS3DMSDS5Y6C'
 		assert catalog_item[2]['id'] != 'VM7HX7V7ZZPHYUJPDTD2KC7N'
 
