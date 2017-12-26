@@ -4,7 +4,7 @@
 '''
 Test of the SqWare package Sq_Connect Class.
 '''
-
+import os
 import pytest
 import requests 
 import json
@@ -37,7 +37,7 @@ class Test_Sq_Connect_Catalog(object):
 		'''
 		#catalog class instance
 		#self.sq_category.location  calls the location_id that inherits from the Sq_Connect class constructor.
-		catalog = self.sq_category.retrieve_catalog_categories(self.sq_category.location)
+		catalog = self.sq_category.get_categories(self.sq_category.location)
 		
 		assert catalog[0]['name'] == 'Smoothies'
 		assert catalog[2]['id'] == 'X5VKXVI6I2ZPBFF75YTDNNL2'
@@ -47,11 +47,10 @@ class Test_Sq_Connect_Catalog(object):
 		Test catalog_id filters through json data to retrieve items associated with the id.
 		'''
 		#catalog class instance
-		catalog = self.sq_category.retrieve_catalog_categories(self.sq_category.location)
+		catalog = self.sq_category.get_categories(self.sq_category.location)
 		#uses catalog id to retrieve items associated with it.
-		catalog_item = self.sq_category.retrieve_category_items(catalog[2]['id'], catalog[2]['name'])
-		catalog_item_error = self.sq_category.retrieve_category_items('1EdSJSNRTKSSH')
-		print(catalog)
+		catalog_item = self.sq_category.get_cat_items(catalog[2]['id'], catalog[2]['name'])
+		catalog_item_error = self.sq_category.get_cat_items('1EdSJSNRTKSSH')
 
 		#test category id matches products category ids.
 		assert catalog[2]['id'] == catalog_item[1]['item_data']['category_id']
@@ -66,6 +65,23 @@ class Test_Sq_Connect_Catalog(object):
 
 		#test wrong ID entered.
 		assert catalog_item_error == None
+
+	def test_catalog_categories_items_retrieval_file_and_directories(self):
+		'''
+		'''
+		#catalog class instance
+		catalog = self.sq_category.get_categories(self.sq_category.location)
+		#uses catalog id to retrieve items associated with it.
+		catalog_item = self.sq_category.get_cat_items(catalog[2]['id'], catalog[2]['name'])
+
+		#test category id matches products category ids.
+		assert catalog[2]['id'] == catalog_item[1]['item_data']['category_id']
+
+		#check directory exists
+		assert os.path.exists('../sqware/item_json') == True
+		assert os.path.isdir('../sqware/item_json') == True
+
+
 
 
 
