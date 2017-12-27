@@ -11,7 +11,7 @@ import os
 import json
 import requests
 import squareconnect
-from sqware.secrets import get_secrets
+from sqware.connect.secrets import get_secrets
 
 
 class Sq_Connect(object):

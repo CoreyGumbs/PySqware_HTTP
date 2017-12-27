@@ -8,8 +8,8 @@ Test of the SqWare package Sq_Connect Class.
 import pytest
 import requests 
 import json
-from sqware.connection import Sq_Connect
-from sqware.categories import Sq_Catalog
+from sqware.connect import Sq_Connect
+from sqware.catalog import get_categories
 
 #Test of Sq_Connect Module
 class Test_Sq_Connect_Api_Connection(object):
@@ -22,7 +22,6 @@ class Test_Sq_Connect_Api_Connection(object):
 	def setup_class(cls):
 		#create class instance of Sq_Connect
 		cls.sq_connect = Sq_Connect()
-		cls.sq_catalog = Sq_Catalog()
 
 	def test_api_connection(self):
 		'''
@@ -54,11 +53,13 @@ class Test_Sq_Connect_Api_Connection(object):
 
 	def test_api_post(self):
 		'''
+		Test Sq_Connect.post using get_categories method
 
 		'''
-		query_item = self.sq_catalog.retrieve_catalog_categories('/v2/catalog/list')
+		#gets categories for individual store location.
+		query_item = get_categories(self.sq_connect.location_id)
 		
-		posted = self.sq_connect.post('/v2/catalog/search', {'id':query_item[2]['id']})
+		posted = self.sq_connect.post('/v2/catalog/search', {'id':query_item[0]['id']})
 		
 		assert query_item[0]['name'] == 'Smoothies'
 		assert posted.status_code == requests.codes.ok

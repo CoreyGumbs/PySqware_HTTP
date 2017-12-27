@@ -11,7 +11,7 @@ import json
 
 	
 #Global Paths
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 security_key = os.path.join(BASE_DIR, 'secrets.json')
 
 def get_secrets(setting):
