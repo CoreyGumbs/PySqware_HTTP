@@ -5,7 +5,6 @@
 Retrieve individual store Categories.
 
 '''
-import os
 import json
 import requests
 from sqware.connect import Sq_Connect
