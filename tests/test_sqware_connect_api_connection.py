@@ -17,7 +17,6 @@ class Test_Sq_Connect_Api_Connection(object):
 	Testing of the Sq_connect module. Currently uses the square sandbox application ID and Access Token.
 
 	'''
-
 	@classmethod
 	def setup_class(cls):
 		#create class instance of Sq_Connect
@@ -39,6 +38,18 @@ class Test_Sq_Connect_Api_Connection(object):
 		#checks for correct url path
 		assert locations.url == 'https://connect.squareup.com/v2/locations'
 
+	# def test_api_connection_error_exceptions(self):
+	# 	'''
+	# 	Test the error exceptions of sq_connect().
+	# 	'''
+	# 	#returns string of HTTPError()
+	# 	error_response_404 = self.sq_connect.get('/v2/locations/')
+	# 	error_response_500 = self.sq_connect.get('/v5/locations')
+
+	# 	#checks for common http errors.
+	# 	assert error_response_404 == '404 Client Error: Not Found for url: https://connect.squareup.com/v2/locations/'
+	# 	assert error_response_500 == '500 Server Error: Internal Server Error for url: https://connect.squareup.com/v5/locations'
+
 	def test_api_post(self):
 		'''
 		Test Sq_Connect.post using get_categories method
@@ -51,20 +62,6 @@ class Test_Sq_Connect_Api_Connection(object):
 		
 		assert query_item[0]['name'] == 'Smoothies'
 		assert posted.status_code == requests.codes.ok
-
-	def test_api_connection_error_exceptions(self):
-		'''
-		Test the error exceptions of sq_connect().
-		'''
-		#returns string of HTTPError()
-		error_response_404 = self.sq_connect.get('/v2/locations/')
-		error_response_500 = self.sq_connect.get('/v5/locations')
-		error_response_post = self.sq_connect.post('/v2/catalog/search/theonering', {'id': '13ascvei'})
-
-		#checks for common http errors.
-		assert error_response_404 == '404 Client Error: Not Found for url: https://connect.squareup.com/v2/locations/'
-		assert error_response_500 == '500 Server Error: Internal Server Error for url: https://connect.squareup.com/v5/locations'
-		assert error_response_post == '404 Client Error: Not Found for url: https://connect.squareup.com/v2/catalog/search/theonering'
 
 
 

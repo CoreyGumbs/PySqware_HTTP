@@ -40,8 +40,10 @@ class Sq_Connect(object):
 		#'timeout' parameter can be changed to desired time. See Requests docs (http://docs.python-requests.org/en/master/user/quickstart/#custom-headers).
 		sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers, timeout=3)
 		try:
-			sq_connection.raise_for_status()
-			return sq_connection	
+			if sq_connection.status_code == requests.codes.ok:
+				return sq_connection
+			else:
+				return sq_connection.raise_for_status()
 		except requests.exceptions.RequestException as e:
 			return str(e)
 
@@ -53,8 +55,10 @@ class Sq_Connect(object):
 		'''
 		sq_connection = requests.post('https://connect.squareup.com' + request_path, headers = self.request_headers, json=data)
 		try: 
-			sq_connection.raise_for_status()
-			return sq_connection	
+			if sq_connection.status_code == requests.codes.ok:
+				return sq_connection
+			else:
+				return sq_connection.raise_for_status()	
 		except requests.exceptions.RequestException as e:
 			return str(e)
 

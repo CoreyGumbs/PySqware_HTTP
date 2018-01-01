@@ -7,4 +7,6 @@ __version__ = '1.1.0'
 __version__update = 'December 26, 2017'
  
 from sqware.catalog.categories import get_categories
-__all__ = ['get_categories', ]
+from sqware.catalog.products import Sq_Products
+
+__all__ = ['get_categories', 'Sq_Products', ]
