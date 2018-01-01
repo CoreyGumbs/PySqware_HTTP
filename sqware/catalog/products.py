@@ -5,10 +5,8 @@
 Retrieve individual store Categories.
 
 '''
-import os
 import json
 import requests
-from pathlib import Path
 from sqware.connect import Sq_Connect
 from sqware.catalog import get_categories
 
@@ -22,8 +20,7 @@ class Sq_Products(object):
 		self.connect = Sq_Connect()
 		self.location_id = self.connect.location_id
 
-	def get_json_data(self):
-		self.get_data = self.connect.get('/v2/catalog/list?types=item')
-		self.json_data = self.get_data.json()
-		return self.json_data
+	
+
+
 		
