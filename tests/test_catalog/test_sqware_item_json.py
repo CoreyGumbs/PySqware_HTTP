@@ -8,6 +8,7 @@ import os
 import pytest
 import requests 
 import json
+from pathlib import Path
 from sqware.connect import Sq_Connect
 from sqware.catalog import get_categories, Sq_Products, ItmJson
 
@@ -18,23 +19,34 @@ class Test_Catalog_ItmJson(object):
 	def setup_class(cls):
 		cls.connect = Sq_Connect()
 		cls.products = Sq_Products()
-		cls.directory_path = '/Users/cgumbs/Devs/projects/pysqware_http/PySqware/sqware/catalog/json'
+		cls.directory_path = '/Users/cgumbs/Devs/projects/pysqware_http/PySqware/sqware/catalog/'
 		cls.items = ItmJson(
 			directory_path=cls.directory_path
 			)
 
 	def test_get_data(self):
 		'''
-		Test of json data from square items api.
+		Test of creation of json directory and file(s).
 		'''
+		self.direct_path = Path(self.items.dir_path + 'json/')
+		self.file_name = Path(self.items.dir_path + 'json/items.json')
 		self.json_items = self.items.get_data()
 
-		#test string in json data
-		#assert 'objects' in self.json_items
-		self.json_items
+		assert self.direct_path.exists() == True
+		assert self.file_name.exists() == True
 
-	def test_write_json_data(self):
+	def test_json_data_saved(self):
 		'''
-		Test json data written to file
+		Test Json data is saved.
 		'''
-		pass
+		self.file_name = Path(self.items.dir_path + 'json/items.json')
+
+		with open(self.file_name, 'r') as json_file:
+			json_data = json.load(json_file)
+
+		assert 'objects' in json_data
+		assert 'category_id' in json_data['objects'][1]['item_data']
+
+
+
+
