@@ -59,20 +59,44 @@ class ItmJson(object):
 		'''
 		self.directory = self.__directory_check()
 		self.file_name = Path(str(path_name +'json/items.json'))
-		#if directory exists.
-		if self.directory:
-			#creates file if none.
-			while not self.file_name.exists():
+		try:
+			#if directory exists.
+			if self.directory:
+				#creates file if none.
+				while not self.file_name.exists():
+					with open(self.file_name, 'w') as file:
+						file.write(json_data)
+			#overwrites file if exists.
+			elif self.file_name.exists():
 				with open(self.file_name, 'w') as file:
 					file.write(json_data)
-			#overwrites file if exists.
-		elif self.file_name.exists():
-			with open(self.file_name, 'w') as file:
-				file.write(json_data)
+		except IOError as e:
+			return(str(e))
 
-
-	def get_data(self):
+	def create_json(self):
+		'''
+		initiates the json retrieval and file writing class methods
+		'''
 		self.__write_item_json(self.dir_path ,self.__get_item_json())
+
+	def retrieve_json(self):
+		'''
+		Opens created json data file and returns it for iteration.
+		'''
+		self.directory = self.__directory_check()
+		self.file_name = Path(self.dir_path +'json/items.json')
+		try:
+			if self.directory:
+				if self.file_name.exists():
+					with open(self.file_name, 'r') as json_file:
+						json_data = json.load(json_file)
+						return json_data
+			else:
+				return ('Directory not found. directory_check() returned : {}').format(self.directory)
+		except OSError as e:
+			return str(e)
+
+
 
  
 
