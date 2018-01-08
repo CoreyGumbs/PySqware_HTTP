@@ -41,7 +41,7 @@ class ItmJson(object):
 		*** mkdir flag - "exist_ok=False" prevents additional directories from being created. see documentation ***
 		'''
 		#set directory path
-		dir_name = Path(self.dir_path + str('json'))
+		dir_name = Path(self.dir_path + 'json')
 		#tests if directory exists. creates new one if it doesnt.
 		while not dir_name.exists():
 			
@@ -66,9 +66,9 @@ class ItmJson(object):
 				with open(self.file_name, 'w') as file:
 					file.write(json_data)
 			#overwrites file if exists.
-			elif self.file_name.exists():
-				with open(self.file_name, 'w') as file:
-					file.write(json_data)
+		elif self.file_name.exists():
+			with open(self.file_name, 'w') as file:
+				file.write(json_data)
 
 
 	def get_data(self):
