@@ -4,7 +4,6 @@
 '''
 Test of the Sqware package Sq_Products Class.
 '''
-import os
 import pytest
 import requests 
 import json

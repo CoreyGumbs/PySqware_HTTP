@@ -30,6 +30,7 @@ class Test_Sq_Connect_Catalog(object):
 		#uses location id from Sq_Connect() location_id variable.
 		#returns list of json data for individual store location.
 		catalog = get_categories(self.connect.location_id)
+		print(catalog)
 		
 		#Retrieve category name
 		assert catalog[0]['name'] == 'Smoothies'

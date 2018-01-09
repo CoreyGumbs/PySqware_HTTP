@@ -10,15 +10,15 @@ import requests
 import json
 from pathlib import Path
 from sqware.connect import Sq_Connect
-from sqware.catalog import get_categories, Sq_Products, ItmJson
+from sqware.catalog import get_categories, ItmJson, CategoryJson 
 
 class Test_Catalog_ItmJson(object):
 	'''
+	Test ItmJson Class
 	'''
 	@classmethod
 	def setup_class(cls):
 		cls.connect = Sq_Connect()
-		cls.products = Sq_Products()
 		#hard coded path of file
 		cls.directory_path = '/Users/cgumbs/Devs/projects/pysqware_http/PySqware/sqware/catalog/'
 		cls.items = ItmJson(
@@ -46,6 +46,28 @@ class Test_Catalog_ItmJson(object):
 		assert 'objects' in self.data_retrieval
 		assert 'category_id' in self.data_retrieval['objects'][1]['item_data']
 
+
+class Test_Catalog_CategoryJson(object):
+	'''
+	Test CategoryJson Class
+	'''
+	@classmethod
+	def setup_class(cls):
+		cls.connect = Sq_Connect()
+		cls.category = CategoryJson()
+		#hard coded path of file
+		cls.directory_path = '/Users/cgumbs/Devs/projects/pysqware_http/PySqware/sqware/catalog/'
+		cls.items = ItmJson(
+			#takes the path where json data file to be stored.
+			directory_path=cls.directory_path
+			)
+
+	def test_category_dir_and_category_file_exists(self):
+		self.json_dir = Path(self.directory_path + 'json/')
+		self.category_file = Path(self.directory_path + 'json/category.json')
+
+		assert self.json_dir.exists() == True
+		assert self.category_file.exists() == True
 
 
 

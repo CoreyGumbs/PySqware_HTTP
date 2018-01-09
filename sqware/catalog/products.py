@@ -7,7 +7,9 @@ Retrieve individual store Categories.
 '''
 import json
 import requests
-from sqware.catalog import get_categories, ItmJson
+from pathlib import Path
+from sqware.connect import Sq_Connect
+
 
 
 class Sq_Products(object):

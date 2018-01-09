@@ -1,21 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
-import datetime
+
 import json
 import requests
 from pathlib import Path
 from sqware.connect import Sq_Connect
-from sqware.catalog import get_categories
+
 
 
 class ItmJson(object):
 	'''
-	Item json data
+	Item/Products json Data.
 	'''
 	def __init__(self, directory_path):
 		self.connect = Sq_Connect()
-		self.categories = get_categories(self.connect.location_id)
 		self.dir_path = directory_path
 
 	def __str__(self):
@@ -100,9 +98,10 @@ class ItmJson(object):
 		except OSError as e:
 			return str(e)
 
-
-
- 
+class CategoryJson(object):
+	'''
+	Category Json Data.
+	'''
 
 
 
