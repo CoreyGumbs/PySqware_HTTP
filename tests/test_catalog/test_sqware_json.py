@@ -4,10 +4,7 @@
 '''
 Test of the Sqware package Sq_Products Class.
 '''
-import os
 import pytest
-import requests 
-import json
 from pathlib import Path
 from sqware.connect import Sq_Connect
 from sqware.catalog import ItmJson, CategoryJson 

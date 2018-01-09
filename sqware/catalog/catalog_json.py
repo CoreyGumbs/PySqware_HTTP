@@ -6,8 +6,6 @@ import requests
 from pathlib import Path
 from sqware.connect import Sq_Connect
 
-
-
 class ItmJson(object):
 	'''
 	Item/Products json Data.
@@ -70,12 +68,6 @@ class ItmJson(object):
 					file.write(json_data)
 		except IOError as e:
 			return(str(e))
-
-	# def create_json(self):
-	# 	'''
-	# 	initiates the json retrieval and file writing class methods
-	# 	'''
-	# 	self.__write_item_json(self.dir_path, self.__get_item_json())
 
 	def retrieve_json(self):
 		'''

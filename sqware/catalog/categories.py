@@ -7,16 +7,11 @@ Retrieve individual store Categories.
 '''
 import json
 import requests
-from sqware.connect import Sq_Connect
+from sqware.catalog import CategoryJson 
 
-def get_categories(location_id):
+def get_categories():
 	'''
-	Retrieves category from individual square location.
+	Retrieves categories from json file.
 	'''
-	#Sq_Connect instance
-	connect = Sq_Connect()
-	#Connect to square api using location_id
-	category_endpoint = connect.get('/v1/' + location_id + '/categories')
-	#Decodes json data as list
-	category_data= category_endpoint.json()
-	return category_data
+	categories = CategoryJson(directory_path='/Users/cgumbs/Devs/projects/pysqware_http/PySqware/sqware/catalog/')
+	return categories.retrieve_json()
