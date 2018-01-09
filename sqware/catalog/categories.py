@@ -7,11 +7,12 @@ Retrieve individual store Categories.
 '''
 import json
 import requests
-from sqware.catalog import CategoryJson 
+from sqware.catalog import ItmJson, CategoryJson 
 
 def get_categories():
 	'''
 	Retrieves categories from json file.
 	'''
-	categories = CategoryJson(directory_path='/Users/cgumbs/Devs/projects/pysqware_http/PySqware/sqware/catalog/')
+	#enter path where json directory is located.
+	categories = CategoryJson()
 	return categories.retrieve_json()
