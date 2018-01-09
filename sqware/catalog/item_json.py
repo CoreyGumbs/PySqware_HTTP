@@ -58,7 +58,7 @@ class ItmJson(object):
 		*** May add a test for last time file modified and if any changes occured. ***
 		'''
 		self.directory = self.__directory_check()
-		self.file_name = Path(str(path_name +'json/items.json'))
+		self.file_name = Path(path_name + 'json/items.json')
 		try:
 			#if directory exists.
 			if self.directory:
@@ -73,19 +73,23 @@ class ItmJson(object):
 		except IOError as e:
 			return(str(e))
 
-	def create_json(self):
-		'''
-		initiates the json retrieval and file writing class methods
-		'''
-		self.__write_item_json(self.dir_path ,self.__get_item_json())
+	# def create_json(self):
+	# 	'''
+	# 	initiates the json retrieval and file writing class methods
+	# 	'''
+	# 	self.__write_item_json(self.dir_path, self.__get_item_json())
 
 	def retrieve_json(self):
 		'''
 		Opens created json data file and returns it for iteration.
 		'''
+		#calls __write_item_json()
+		self.create_json_file = self.__write_item_json(self.dir_path, self.__get_item_json())
+		#calls __directory_check()
 		self.directory = self.__directory_check()
 		self.file_name = Path(self.dir_path +'json/items.json')
 		try:
+
 			if self.directory:
 				if self.file_name.exists():
 					with open(self.file_name, 'r') as json_file:

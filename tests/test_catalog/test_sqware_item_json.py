@@ -32,7 +32,7 @@ class Test_Catalog_ItmJson(object):
 		'''
 		self.direct_path = Path(self.items.dir_path + 'json/')
 		self.file_name = Path(self.items.dir_path + 'json/items.json')
-		self.json_items = self.items.create_json()
+		self.json_items = self.items.retrieve_json()
 
 		assert self.direct_path.exists() == True
 		assert self.file_name.exists() == True
@@ -41,7 +41,6 @@ class Test_Catalog_ItmJson(object):
 		'''
 		Test Json data file is saved and retrieved for iteration.
 		'''
-		self.file_name = Path(self.items.dir_path + 'json/items.json')
 		self.data_retrieval = self.items.retrieve_json()
 
 		assert 'objects' in self.data_retrieval
