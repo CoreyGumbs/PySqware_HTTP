@@ -3,7 +3,7 @@
 
 __author__ = 'Corey Gumbs'
 __date__ = 'August 28, 2017'
-__version__ = '1.1.0'
+__version__ = '0.2.0'
 __version__update = 'January 9, 2018'
  
 
