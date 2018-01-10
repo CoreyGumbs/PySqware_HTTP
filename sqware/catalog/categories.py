@@ -5,9 +5,7 @@
 Retrieve individual store Categories.
 
 '''
-import json
-import requests
-from sqware.catalog import ItmJson, CategoryJson 
+from sqware.catalog import CategoryJson 
 
 def get_categories():
 	'''

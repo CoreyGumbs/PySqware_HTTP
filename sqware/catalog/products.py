@@ -5,33 +5,38 @@
 Retrieve individual store Categories.
 
 '''
+from sqware.catalog import ItmJson
 
-# from pathlib import Path
-# from sqware.connect import Sq_Connect
-# from sqware.catalog import ItmJson,  get_categories
+class Sq_Products(object):
+	'''
+	'''
+	def __init__(self):
+		'''
+		'''
+		self.item_json = ItmJson()
 
+	def __str__(self):
+		return '{}'.format('Sq_Products Module')
 
+	def get_category_items(self, category_id):
+		'''
+		'''
+		self.json_data = self.item_json.retrieve_json()
+		try:
+			#products results list 
+			category_items = []
+			#loops through json data and returns associated items.
+			for products in self.json_data['objects']:
+				for key, value in products['item_data'].items():
+					if category_id == value:
+						category_items.append(products)
 
-# class Sq_Products(object):
-# 	'''
-# 	'''
-# 	def __init__(self, category_id=None, category_name=None, json_path=None):
-# 		'''
-# 		'''
-# 		self.connect = Sq_Connect()
-# 		self.location_id = self.connect.location_id
-# 		self.category = get_categories()
-# 		self.cat_id = category_id
-# 		self.cat_name = category_name
-# 		self.json_dir = json_path
+			#if products are placed in list, returns list
+			if category_items:
+				return category_items
 
-# 	def __str__(self):
-# 		return '{} : {}'.format(self.cat_name, self.cat_id)
-
-# 	def get_all_items(self):
-# 		'''
-# 		'''
-# 		pass
+		except TypeError as e:
+			return str(e)
 
 
 

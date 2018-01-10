@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import json
-import requests
 from pathlib import Path
 from sqware.connect.secrets import get_secrets
 from sqware.connect import Sq_Connect
@@ -10,7 +9,6 @@ from sqware.connect import Sq_Connect
 #global constant of JSON directory path
 #set desired json directory path on secrets.json file in connect module.
 DIRECTORY_PATH = get_secrets('JSON_DIRECTORY')
-
 
 class ItmJson(object):
 	'''
@@ -21,7 +19,7 @@ class ItmJson(object):
 		self.dir_path = DIRECTORY_PATH
 
 	def __str__(self):
-		return 'ItmJson path: {}'.format(self.dir_path)
+		return '{}'.format('ItmJson Module')
 
 	def __get_item_json(self):
 		'''
@@ -106,7 +104,7 @@ class CategoryJson(object):
 		self.dir_path = DIRECTORY_PATH
 
 	def __str__(self):
-		return 'CategoryJson path: {}'.format(self.dir_path)
+		return '{}'.format('CategoryJson Module')
 
 	def __get_category_json(self):
 		self.get_cat_data = self.connect.get('/v1/' + self.connect.location_id + '/categories')
