@@ -2,17 +2,16 @@
 # -*- coding: utf-8 -*-
 
 '''
-Retrieve individual store Categories.
+Retrieve items associated with a particular category ID.
 
 '''
 from sqware.catalog import ItmJson
 
 class Sq_Products(object):
 	'''
+	Products class.
 	'''
 	def __init__(self):
-		'''
-		'''
 		self.item_json = ItmJson()
 
 	def __str__(self):
@@ -20,11 +19,15 @@ class Sq_Products(object):
 
 	def get_category_items(self, category_id):
 		'''
+		Retrieves items associated with selected category_id
 		'''
+		#retrieve all items from json file.
 		self.json_data = self.item_json.retrieve_json()
+		
 		try:
-			#products results list 
+			#products results container 
 			category_items = []
+			
 			#loops through json data and returns associated items.
 			for products in self.json_data['objects']:
 				for key, value in products['item_data'].items():

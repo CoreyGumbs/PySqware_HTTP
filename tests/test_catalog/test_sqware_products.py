@@ -9,6 +9,7 @@ from sqware.catalog import get_categories, Sq_Products
 
 class Test_Catalog_Products(object):
 	'''
+	Test of Sq_Products Class.
 	'''
 	@classmethod
 	def setup_class(cls):
@@ -20,9 +21,10 @@ class Test_Catalog_Products(object):
 		'''
 		Retrieve products associated with an item
 		'''
+		#selected category_id
 		self.cat_id = self.category[2]['id']
+		#calls to find products associated with category_id
 		self.cat_items = self.products.get_category_items(self.cat_id)
-		print(self.cat_items)
 
 		assert 'X5VKXVI6I2ZPBFF75YTDNNL2' in self.cat_items[0]['item_data']['category_id']
 		assert 'X5VKXVI6I2ZPBFF75YTDNNL2' in self.cat_items[1]['item_data']['category_id']
