@@ -63,11 +63,6 @@ class ItmJson(object):
 			#if directory exists.
 			if self.directory:
 				#creates file if none.
-				while not self.file_name.exists():
-					with open(self.file_name, 'w') as file:
-						file.write(json_data)
-			#overwrites file if exists.
-			elif self.file_name.exists():
 				with open(self.file_name, 'w') as file:
 					file.write(json_data)
 		except IOError as e:
@@ -143,11 +138,6 @@ class CategoryJson(object):
 		try:
 			#if directory exists.
 			if self.directory:
-				while not self.file_name.exists():
-					with open(self.file_name, 'w') as file:
-						file.write(json_data)
-			#overwrites file if exists.
-			elif self.file_name.exists():
 				with open(self.file_name, 'w') as file:
 					file.write(json_data)
 		except IOError as e:

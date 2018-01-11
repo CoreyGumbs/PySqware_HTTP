@@ -436,6 +436,114 @@
             "type": "ITEM",
             "updated_at": "2017-12-18T21:28:49.838Z",
             "version": 1513632529838
+        },
+        {
+            "id": "GRKA5IHMVOH5YH3ZQ4IJSOQB",
+            "is_deleted": false,
+            "item_data": {
+                "category_id": "X5VKXVI6I2ZPBFF75YTDNNL2",
+                "modifier_list_info": [
+                    {
+                        "enabled": true,
+                        "max_selected_modifiers": -1,
+                        "min_selected_modifiers": -1,
+                        "modifier_list_id": "UBLUYO4HHIZVWHBDDW2YDSHI",
+                        "visibility": "PUBLIC"
+                    },
+                    {
+                        "enabled": true,
+                        "max_selected_modifiers": -1,
+                        "min_selected_modifiers": -1,
+                        "modifier_list_id": "H4SGVNUNNTZ4HUMBG2Y72G33",
+                        "visibility": "PUBLIC"
+                    }
+                ],
+                "name": "Pissy Salad",
+                "product_type": "REGULAR",
+                "skip_modifier_screen": false,
+                "tax_ids": [
+                    "NJWG6WU45XJJYSPGEUX7FXBP"
+                ],
+                "variations": [
+                    {
+                        "id": "OKLUT3N2CJ5O356ML5UUITBI",
+                        "is_deleted": false,
+                        "item_variation_data": {
+                            "item_id": "GRKA5IHMVOH5YH3ZQ4IJSOQB",
+                            "name": "Regular",
+                            "ordinal": 1,
+                            "price_money": {
+                                "amount": 1000,
+                                "currency": "USD"
+                            },
+                            "pricing_type": "FIXED_PRICING"
+                        },
+                        "present_at_all_locations": true,
+                        "type": "ITEM_VARIATION",
+                        "updated_at": "2018-01-11T21:29:57.902Z",
+                        "version": 1515706197902
+                    }
+                ],
+                "visibility": "PRIVATE"
+            },
+            "present_at_all_locations": true,
+            "type": "ITEM",
+            "updated_at": "2018-01-11T21:29:57.902Z",
+            "version": 1515706197902
+        },
+        {
+            "id": "TBNODGBO7UQALJCABD7DGZKV",
+            "is_deleted": false,
+            "item_data": {
+                "modifier_list_info": [
+                    {
+                        "enabled": true,
+                        "max_selected_modifiers": -1,
+                        "min_selected_modifiers": -1,
+                        "modifier_list_id": "UBLUYO4HHIZVWHBDDW2YDSHI",
+                        "visibility": "PUBLIC"
+                    },
+                    {
+                        "enabled": true,
+                        "max_selected_modifiers": -1,
+                        "min_selected_modifiers": -1,
+                        "modifier_list_id": "H4SGVNUNNTZ4HUMBG2Y72G33",
+                        "visibility": "PUBLIC"
+                    }
+                ],
+                "name": "Cheese Steak",
+                "product_type": "REGULAR",
+                "skip_modifier_screen": false,
+                "tax_ids": [
+                    "NJWG6WU45XJJYSPGEUX7FXBP"
+                ],
+                "variations": [
+                    {
+                        "id": "6MHFLUTTWYMBDJENREXQYW2A",
+                        "is_deleted": false,
+                        "item_variation_data": {
+                            "item_id": "TBNODGBO7UQALJCABD7DGZKV",
+                            "name": "Regular",
+                            "ordinal": 1,
+                            "price_money": {
+                                "amount": 500,
+                                "currency": "USD"
+                            },
+                            "pricing_type": "FIXED_PRICING",
+                            "sku": "Star"
+                        },
+                        "present_at_all_locations": true,
+                        "type": "ITEM_VARIATION",
+                        "updated_at": "2018-01-11T21:33:59.503Z",
+                        "version": 1515706439503
+                    }
+                ],
+                "visibility": "PRIVATE"
+            },
+            "present_at_all_locations": true,
+            "type": "ITEM",
+            "updated_at": "2018-01-11T21:33:59.503Z",
+            "version": 1515706439503
         }
     ]
 }
