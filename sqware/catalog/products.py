@@ -23,16 +23,13 @@ class Sq_Products(object):
 		'''
 		Retrieves items associated with selected category_id
 		'''
-		#retrieve all items from json file.
-		# self.json_data = self.item_json.retrieve_json()
-		
 		try:
 			#products results container 
 			self.category_items = []
 
 			with open(self.file_name, 'r') as file_data:		
 				#loops through json data and returns associated items.
-				data = json.loads(file_data.read())
+				data = json.load(file_data)
 				for products in data['objects']:
 					for key, value in products['item_data'].items():
 						if category_id == value:
@@ -41,7 +38,6 @@ class Sq_Products(object):
 			#if products are placed in list, returns list
 			if self.category_items:
 				return self.category_items
-
 		except IOError as e:
 			return str(e)
 
