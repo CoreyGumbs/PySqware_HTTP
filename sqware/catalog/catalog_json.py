@@ -138,7 +138,7 @@ class CategoryJson(object):
 		try:
 			#if directory exists.
 			if self.directory:
-				with open(self.file_name, 'w') as file:
+				with open(self.file_name, 'w') as file: 
 					file.write(json_data)
 		except IOError as e:
 			return(str(e))
@@ -154,13 +154,12 @@ class CategoryJson(object):
 		self.file_name = Path(self.dir_path +'json/category.json')
 		try:
 			if self.directory:
-				if self.file_name.exists():
-					with open(self.file_name, 'r') as json_file:
-						json_data = json.load(json_file)
-						return json_data
+				with open(self.file_name, 'r') as json_file:
+					json_data = json.load(json_file)
+					return json_data
 			else:
 				return ('Directory not found. directory_check() returned : {}').format(self.directory)
-		except OSError as e:
+		except IOError as e:
 			return str(e)
 
 

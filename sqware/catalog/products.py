@@ -6,6 +6,7 @@ Retrieve items associated with a particular category ID.
 
 '''
 import json
+from pathlib import Path
 from sqware.catalog import ItmJson
 
 class Sq_Products(object):
@@ -14,7 +15,7 @@ class Sq_Products(object):
 	'''
 	def __init__(self):
 		self.item_json = ItmJson()
-		self.file_name = self.item_json.dir_path + 'json/items.json'
+		self.file_name = Path(self.item_json.dir_path +'json/items.json')
 
 	def __str__(self):
 		return '{}'.format('Sq_Products Module')
@@ -33,8 +34,7 @@ class Sq_Products(object):
 				for products in data['objects']:
 					for key, value in products['item_data'].items():
 						if category_id == value:
-							self.category_items.append(products)
-
+							self.category_items.append(products) 
 			#if products are placed in list, returns list
 			if self.category_items:
 				return self.category_items
