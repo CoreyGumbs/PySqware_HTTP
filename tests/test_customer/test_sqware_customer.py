@@ -13,8 +13,6 @@ class Test_Customer(object):
 	'''
 	@classmethod
 	def setup_class(cls):
-		'''
-		'''
 		cls.connect = Sq_Connect()
 		cls.customer = Sq_Customer(
 			first_name = 'Testy',
@@ -28,5 +26,7 @@ class Test_Customer(object):
 		Checks if customer account already exists.
 		'''
 		self.customer_exists = self.customer.check_customer(self.customer.email)
+		self.no_customer_exists = self.customer.check_customer('MyName@gmail.com')
 
 		assert self.customer_exists == True
+		assert self.no_customer_exists == False
