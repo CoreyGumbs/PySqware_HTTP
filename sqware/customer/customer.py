@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import json
+import requests
 from types import *
 from sqware.connect import Sq_Connect
 
@@ -17,35 +18,58 @@ class Sq_Customer(object):
 		self.email = email
 		self.phone = phone
 
-	def __str__(self):
-		pass
+	def __repr__(self):
+		return '{}{}{}'.format('Customer: ', self.first_name, self.last_name)
 
-	def __get_item_json(self):
+	def __str__(self):
+		return '{}{}{}'.format('Customer: ', self.first_name, self.last_name)
+
+	def __sqware_json_decoder(self, response_obj):
 		'''
-		Retrieves JSON data for all customers. 
+		Creates useable json data from square json response object.
+		'''
+		if isinstance(response_obj, str):
+			return '{}'.format('Customer not found. Please try again.')
+		else:
+			self.retrieved_data = response_obj.json()
+			self.json_data = json.dumps(self.retrieved_data, sort_keys=False, indent=4)
+			self.customer_json = json.loads(self.json_data)
+			return self.customer_json
+
+	def __get_customer_json(self):
+		'''
+		Retrieves JSON response object from square api. 
 		'''
 		#gets data from square catalog endpoint
 		self.get_data = self.connect.get('/v2/customers')
-		#decodes json data
-		self.retrieved_data = self.get_data.json()
-		#prettifies json data
-		self.json_data = json.dumps(self.retrieved_data, sort_keys=False, indent=4)
-		return self.json_data
-
+		#returns decoded json data
+		return self.__sqware_json_decoder(self.get_data)
 
 	def check_customer(self, user_email):
 		'''
 		Checks if customer already exists in square.
 		'''
-		self.get_json =  self.__get_item_json()
-		self.customer_email = json.loads(self.get_json)
+		self.customer_email =  self.__get_customer_json()
 		
 		for items in self.customer_email['customers']:
 			if user_email in items.get('email_address'):
-				return True
+				return items
 		return False
-		
 
+	def get_customer(self, user_id):
+		'''
+		Retrieves customer data from square api.
+		'''
+		self.get_data = self.connect.get('/v2/customers/' + user_id)
+		return self.__sqware_json_decoder(self.get_data)
+
+	
+
+
+
+
+	
+	
 		
 
 

@@ -495,6 +495,7 @@
             "id": "TBNODGBO7UQALJCABD7DGZKV",
             "is_deleted": false,
             "item_data": {
+                "category_id": "NMNVXE3U2I2H5XSEWOYSGCV2",
                 "modifier_list_info": [
                     {
                         "enabled": true,
@@ -542,8 +543,8 @@
             },
             "present_at_all_locations": true,
             "type": "ITEM",
-            "updated_at": "2018-01-11T21:33:59.503Z",
-            "version": 1515706439503
+            "updated_at": "2018-01-11T21:53:37.052Z",
+            "version": 1515707617052
         }
     ]
 }

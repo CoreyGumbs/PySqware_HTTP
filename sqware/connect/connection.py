@@ -44,8 +44,14 @@ class Sq_Connect(object):
 				return sq_connection
 			else:
 				return sq_connection.raise_for_status()
-		except requests.exceptions.RequestException as e:
-			return str(e)
+		except requests.exceptions.HTTPError as errhttp:
+			return str(errhttp)
+		except requests.exceptions.ConnectionError as errconn:
+			return '{}{}'('Error Connecting: ', errconn)
+		except requests.exceptions.Timeout as errto:
+			return '{}{}'.format('Timeout Error: ',errto)
+		except requests.exceptions.RequestException as err:
+			return '{}{}'.format("Other Error: ", err)
 
 	
 	def post(self, request_path, data):
@@ -59,8 +65,14 @@ class Sq_Connect(object):
 				return sq_connection
 			else:
 				return sq_connection.raise_for_status()	
-		except requests.exceptions.RequestException as e:
-			return str(e)
+		except requests.exceptions.HTTPError as errhttp:
+			return str(errhttp)
+		except requests.exceptions.ConnectionError as errconn:
+			return '{}{}'('Error Connecting: ', errconn)
+		except requests.exceptions.Timeout as errto:
+			return '{}{}'.format('Timeout Error: ',errto)
+		except requests.exceptions.RequestException as err:
+			return '{}{}'.format("Other Error: ", err)
 
 
 

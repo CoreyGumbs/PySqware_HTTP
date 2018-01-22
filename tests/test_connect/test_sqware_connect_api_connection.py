@@ -45,7 +45,7 @@ class Test_Sq_Connect_Api_Connection(object):
 
 		'''
 		#gets categories for individual store location.
-		query_item = get_categories(self.sq_connect.location_id)
+		query_item = get_categories()
 		
 		posted = self.sq_connect.post('/v2/catalog/search', {'id':query_item[0]['id']})
 		

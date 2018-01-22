@@ -28,5 +28,15 @@ class Test_Customer(object):
 		self.customer_exists = self.customer.check_customer(self.customer.email)
 		self.no_customer_exists = self.customer.check_customer('MyName@gmail.com')
 
-		assert self.customer_exists == True
+		assert self.customer_exists['email_address'] == self.customer.email
 		assert self.no_customer_exists == False
+
+	def test_retrieve_customer(self):
+		'''
+		'''
+		self.customer_exists = self.customer.check_customer(self.customer.email)
+		self.customer_data =  self.customer.get_customer(self.customer_exists['id'])
+		self.wrong_customer = self.customer.get_customer('1PZASnAW!FSL')
+		
+		assert self.customer_data['customer']['id'] == self.customer_exists['id']
+		assert self.wrong_customer == 'Customer not found. Please try again.'
