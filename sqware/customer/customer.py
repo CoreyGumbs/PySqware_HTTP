@@ -8,6 +8,7 @@ from sqware.connect import Sq_Connect
 
 class Sq_Customer(object):
 	'''
+	Square Customer Class
 	'''
 	def __init__(self, first_name, last_name, email, phone):
 		'''x
@@ -17,6 +18,14 @@ class Sq_Customer(object):
 		self.last_name = last_name
 		self.email = email
 		self.phone = phone
+		self.custmr_data = {
+			'given_name' : self.first_name,
+			'family_name': self.last_name,
+			'email_address': self.email,
+			'phone_number': self.phone
+			
+		}
+
 
 	def __repr__(self):
 		return '{}{}{}'.format('Customer: ', self.first_name, self.last_name)
@@ -63,7 +72,16 @@ class Sq_Customer(object):
 		self.get_data = self.connect.get('/v2/customers/' + user_id)
 		return self.__sqware_json_decoder(self.get_data)
 
-	
+	def create_customer(self, data):
+		'''
+		Creates customer
+		'''
+		if not self.check_customer(data['email_address']):
+			self.create_customer = self.connect.post('/v2/customers', data)
+			return self.check_customer(data['email_address'])
+		else:
+			return self.check_customer(data['email_address'])
+			
 
 
 
