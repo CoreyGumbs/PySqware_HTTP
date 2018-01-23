@@ -78,9 +78,8 @@ class Sq_Customer(object):
 		'''
 		if not self.check_customer(data['email_address']):
 			self.create_customer = self.connect.post('/v2/customers', data)
-			return self.check_customer(data['email_address'])
-		else:
-			return self.check_customer(data['email_address'])
+		
+		return self.check_customer(data['email_address'])
 			
 
 
