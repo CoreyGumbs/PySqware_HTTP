@@ -28,6 +28,7 @@ class Sq_Connect(object):
 			'Content-Type':  'application/json'
 			}
 
+
 	def get(self, request_path):
 		'''
 		Connects user to square api. 
@@ -73,6 +74,46 @@ class Sq_Connect(object):
 			return '{}{}'.format('Timeout Error: ',errto)
 		except requests.exceptions.RequestException as err:
 			return '{}{}'.format("Other Error: ", err)
+
+	def put(self, request_path, data):
+		'''
+		Put to Square API
+		Must include data parameter accepts json dictionaries.
+		'''
+		sq_connection = requests.put('https://connect.squareup.com' + request_path, headers = self.request_headers, json=data)
+		try:
+			if sq_connection.status_code == requests.codes.ok:
+				return	sq_connection
+			else:
+				return sq_connection.raise_for_status()
+		except requests.exceptions.HTTPError as errhttp:
+			return str(errhttp)
+		except requests.exceptions.ConnectionError as errconn:
+			return '{}{}'('Error Connecting: ', errconn)
+		except requests.exceptions.Timeout as errto:
+			return '{}{}'.format('Timeout Error: ',errto)
+		except requests.exceptions.RequestException as err:
+			return '{}{}'.format("Other Error: ", err)
+
+	def delete(self, request_path):
+		'''
+		Deletes data from Square API
+		'''
+		sq_connection = requests.delete('https://connect.squareup.com' + request_path, headers = self.request_headers)
+		try:
+			if sq_connection.status_code == requests.codes.ok:
+				return sq_connection
+			else:
+				return sq_connection.raise_for_status()
+		except requests.exceptions.HTTPError as errhttp:
+			return str(errhttp)
+		except requests.exceptions.ConnectionError as errconn:
+			return '{}{}'('Error Connecting: ', errconn)
+		except requests.exceptions.Timeout as errto:
+			return '{}{}'.format('Timeout Error: ',errto)
+		except requests.exceptions.RequestException as err:
+			return '{}{}'.format("Other Error: ", err)
+
 
 
 

@@ -10,6 +10,7 @@ import requests
 import json
 from sqware.connect import Sq_Connect
 from sqware.catalog import get_categories
+from sqware.customer import Sq_Customer
 
 #Test of Sq_Connect Module
 class Test_Sq_Connect_Api_Connection(object):
@@ -22,6 +23,13 @@ class Test_Sq_Connect_Api_Connection(object):
 	def setup_class(cls):
 		#create class instance of Sq_Connect
 		cls.sq_connect = Sq_Connect()
+		#customer instance
+		cls.customer = Sq_Customer(
+			first_name = "John",
+			last_name = "Times",
+			email = "tim@testing.com",
+			phone = "1-123-345-1234"
+			)
 
 	def test_api_connection(self):
 		'''
@@ -66,6 +74,49 @@ class Test_Sq_Connect_Api_Connection(object):
 		assert error_response_500 == '500 Server Error: Internal Server Error for url: https://connect.squareup.com/v5/locations'
 		assert error_response_post == '404 Client Error: Not Found for url: https://connect.squareup.com/v2/catalog/search/theonering'
 
+	def test_api_put(self):
+		'''
+		Test Sq_Connect.put for updating account info.
+		'''
+		self.data = {
+			'given_name': 'Charles',
+			'email_address': self.customer.email,
+			'address': {
+				'address_line_1': '1234 New Street',
+				'locality': 'Boston',
+				'administrative_district_level_1': 'MA',
+				'postal_code': '12345',
+				'country': 'US'
+			}
+		}
+		self.get_customer = self.customer.check_customer_email(self.customer.email)
+		self.update = self.sq_connect.put('/v2/customers/' + self.get_customer['id'], self.data)
+
+		assert self.get_customer['given_name'] == self.data['given_name']
+		assert self.get_customer['address']['locality'] ==  self.data['address']['locality']
+
+	def test_api_delete(self):
+		'''
+		Test Sq_Connect.delete for deleting account.
+		'''
+		self.dummy_customer = Sq_Customer(
+			first_name = 'Delete',
+			last_name = 'Dummy',
+			email = 'test_data@testing.com',
+			phone = '123-345-4566'
+		)
+		self.test_customer = self.dummy_customer.create_customer(self.dummy_customer.custmr_data)
+		self.get_customer = self.dummy_customer.check_customer_email(self.dummy_customer.email)
+		self.deleted = self.sq_connect.delete('/v2/customers/' + self.get_customer['id'])
+
+		assert self.get_customer['given_name'] == self.dummy_customer.first_name
+		'''
+		The Square API returns a json response object of "{}" or an empty dict.
+		This tests whether the response object converted into json returns and empty dict or not.
+		Bool() will return false if dict empty.
+		Uses the .json() of the requests library to render dict in json.
+		'''
+		assert bool(self.deleted.json()) ==  False
 
 
 

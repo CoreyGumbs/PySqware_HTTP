@@ -23,7 +23,6 @@ class Sq_Customer(object):
 			'family_name': self.last_name,
 			'email_address': self.email,
 			'phone_number': self.phone
-			
 		}
 
 
@@ -54,16 +53,46 @@ class Sq_Customer(object):
 		#returns decoded json data
 		return self.__sqware_json_decoder(self.get_data)
 
-	def check_customer(self, user_email):
+	def check_customer_email(self, user_email):
 		'''
 		Checks if customer already exists in square.
 		'''
 		self.customer_email =  self.__get_customer_json()
-		
-		for items in self.customer_email['customers']:
-			if user_email in items.get('email_address'):
-				return items
+	
+		if bool(self.customer_email):
+			for items in self.customer_email['customers']:
+				if user_email in items.get('email_address'):
+					return items
+
 		return False
+
+	def create_customer(self, data):
+		'''
+		Creates customer
+		'''
+		self.check_email = self.check_customer_email(data['email_address'])
+		if not self.check_email:
+			self.create_customer = self.connect.post('/v2/customers', data)
+			return self.__sqware_json_decoder(self.create_customer)
+		elif bool(self.check_email):
+			return '{}'.format('Account already exists.')
+
+	def delete_customer(self, user_id):
+		'''
+		Deletes customer from Square.
+		'''
+		pass
+
+	def update_customer_acct(self, user_id, data):
+		'''
+		Update Customer information.
+		'''
+		self.customer = self.get_customer(user_id)
+		if self.customer['customer']['id'] == user_id:
+			self.update_customer_data = self.connect.put('/v2/customers/' + user_id, data)
+			return self.__sqware_json_decoder(self.update_customer_data)
+		else:
+			return '{}'.format('There is no account associated with that ID.')
 
 	def get_customer(self, user_id):
 		'''
@@ -72,14 +101,6 @@ class Sq_Customer(object):
 		self.get_data = self.connect.get('/v2/customers/' + user_id)
 		return self.__sqware_json_decoder(self.get_data)
 
-	def create_customer(self, data):
-		'''
-		Creates customer
-		'''
-		if not self.check_customer(data['email_address']):
-			self.create_customer = self.connect.post('/v2/customers', data)
-		
-		return self.check_customer(data['email_address'])
 			
 
 
