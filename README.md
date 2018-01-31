@@ -7,7 +7,7 @@ Version 0.3.0
 written using Python 3
 
 #### New Additions(s):
-+ Added Sq_Customer module - CRUD module for customers (create customer, check email, update customer, update email, delete account.)
++ Added Customer module - CRUD module with sq_customer class for customers (create customer, check email, update customer, update email, delete account.)
 
 #### Previous Addition(s):
 + Added catalog module - catalog module collects and creates json data of categories and items from API. It also has a product module that allows items associated with a category_id to be returned for data manipulation.
