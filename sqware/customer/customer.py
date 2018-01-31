@@ -68,7 +68,7 @@ class Sq_Customer(object):
 
 	def create_customer(self, data):
 		'''
-		Creates customer
+		Creates customer in square business location.
 		'''
 		self.check_email = self.check_customer_email(data['email_address'])
 		if not bool(self.check_email):
