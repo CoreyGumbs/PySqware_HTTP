@@ -27,10 +27,10 @@ class Sq_Customer(object):
 
 
 	def __repr__(self):
-		return '{}{}{}'.format('Customer: ', self.first_name, self.last_name)
+		return '{}{} {}'.format('Customer: ', self.first_name, self.last_name)
 
 	def __str__(self):
-		return '{}{}{}'.format('Customer: ', self.first_name, self.last_name)
+		return '{}{} {}'.format('Customer: ', self.first_name, self.last_name)
 
 	def __sqware_json_decoder(self, response_obj):
 		'''
@@ -71,7 +71,7 @@ class Sq_Customer(object):
 		Creates customer
 		'''
 		self.check_email = self.check_customer_email(data['email_address'])
-		if not self.check_email:
+		if not bool(self.check_email):
 			self.create_customer = self.connect.post('/v2/customers', data)
 			return self.__sqware_json_decoder(self.create_customer)
 		elif bool(self.check_email):
@@ -81,18 +81,8 @@ class Sq_Customer(object):
 		'''
 		Deletes customer from Square.
 		'''
-		pass
-
-	def update_customer_acct(self, user_id, data):
-		'''
-		Update Customer information.
-		'''
-		self.customer = self.get_customer(user_id)
-		if self.customer['customer']['id'] == user_id:
-			self.update_customer_data = self.connect.put('/v2/customers/' + user_id, data)
-			return self.__sqware_json_decoder(self.update_customer_data)
-		else:
-			return '{}'.format('There is no account associated with that ID.')
+		self.delete_customer = self.connect.delete('/v2/customers/' + user_id)
+		return self.__sqware_json_decoder(self.delete_customer)
 
 	def get_customer(self, user_id):
 		'''
@@ -101,21 +91,16 @@ class Sq_Customer(object):
 		self.get_data = self.connect.get('/v2/customers/' + user_id)
 		return self.__sqware_json_decoder(self.get_data)
 
-			
-
-
-
-
+	def update_customer_acct(self, user_id, data):
+		'''
+		Update Customer Personal information.
+		'''
+		self.update_customer_data = self.connect.put('/v2/customers/' + user_id, data)
+		return self.__sqware_json_decoder(self.update_customer_data)
 	
-	
-		
-
-
-
-
-
-		
-			
-			
-
-
+	def update_customer_email(self, user_id, data):
+		'''
+		Update Customer's email address.
+		'''
+		self.update_email_data = self.connect.put('/v2/customers/' + user_id, data)
+		return self.__sqware_json_decoder(self.update_email_data)

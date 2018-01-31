@@ -113,8 +113,3 @@ class Sq_Connect(object):
 			return '{}{}'.format('Timeout Error: ',errto)
 		except requests.exceptions.RequestException as err:
 			return '{}{}'.format("Other Error: ", err)
-
-
-
-
-

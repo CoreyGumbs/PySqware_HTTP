@@ -117,14 +117,3 @@ class Test_Sq_Connect_Api_Connection(object):
 		Uses the .json() of the requests library to render dict in json.
 		'''
 		assert bool(self.deleted.json()) ==  False
-
-
-
-
-	
-
-
-	
-
-
- 
