@@ -75,7 +75,7 @@ This is the json file is where you will store all sensitive data used for the Sq
 	"LOCATION_ID": "[square store location goes here.]",
 }
 ```
-**Note:** You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
+**NOTE:** You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
 
 ---
 
@@ -147,7 +147,7 @@ def __init__(self):
 			}
 ```
 
-**Note:** You may decided to change your json setting keys on the secrets.json file. If you do that make sure you update those setting keys within the __init__ method or an error will return.
+**NOTE:** You may decided to change your json setting keys on the secrets.json file. If you do that make sure you update those setting keys within the __init__ method or an error will return.
 
 ```python
 def __init__(self):
@@ -194,7 +194,7 @@ In this example, this will return a json response object of all locations associ
 For this application the **DELETE** method has only been used to delete customer information. 
 This is explained further in the **Sq_Customer class**.  More info: [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-deletecustomer)
 
-**NOTE:***
+**NOTE:**
 
 There may be times that you may have to hardcode a path into your GET method to retrieve certain data/data types from the Square API. 
 
@@ -227,9 +227,9 @@ The **data** parameter accepts the json/dict data needed to be passed to the Squ
 from sqware.connect import Sq_Connect
 
 self.json_data = {
-					"given_name": "John",
-					"family_name": "Doe"
-				}
+	"given_name": "John",
+	"family_name": "Doe"
+	}
 
 self.connect = Sq_Connect()
 
