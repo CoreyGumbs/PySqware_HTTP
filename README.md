@@ -29,7 +29,7 @@ written using Python 3
 
 
 #### Read First
----------------
+
 If you have not created a square business account, please do so before continuing.
 The Connect class assumes that you have already set-up a square merchant account and have access to 
 the following square credentials:
@@ -39,13 +39,14 @@ the following square credentials:
 + Location(s) ID
 
 #### Endpoints
---------------
+
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
 CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://docs.connect.squareup.com/api/connect/v2#endpointnamesandreturnvalues "Endpoint Names and Return Values"). 
 
 
 
-License:
---------
+
+## License:
+
 
 This project is licensed under the MIT License.
