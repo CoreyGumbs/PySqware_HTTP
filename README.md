@@ -23,7 +23,7 @@ written using Python 3
 
 
 
-## Connect - Sq_Connect Class
+## Connect - Secrets.py and Secrets.json
 
 
 #### Read First
