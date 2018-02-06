@@ -6,30 +6,36 @@ update web applications in real time as changes are madeto square accounts (IE: 
 
 Any changes made to the Square Dashboard or POS system will reflect on the web application in real time. 
 
-This program assumes that you have already set-up a square merchant accounts and have access to 
-the following square credentials:
-
-+ Access Token
-+ Application ID 
-+ Location(s) ID
-
+Square Business/Merchant Account needed before using.
 
 Version 0.3.0
 -------------
 
 written using Python 3
 
-#### New Feature(s):
+Features
+--------
+
+#### Recently Added Feature(s):
 + Added Customer module - CRUD module with sq_customer class for customers (create customer, check email, update customer, update email, delete account.)
 
-#### Previous Feature(s):
+#### Previously Added Feature(s):
 + Added catalog module - catalog module collects and creates json data of categories and items from API. It also has a product module that allows items associated with a category_id to be returned for data manipulation.
 + Added Sq_Connect class with a connect_api function for connection to Square api.
 
 
 Connect
 -------
-The Connect class
+The Connect class assumes that you have already set-up a square merchant accounts and have access to 
+the following square credentials:
+
++ Access Token
++ Application ID 
++ Location(s) ID
+
+**If you have not created a square business account, please do so before continuing.**
+
+
 
 #### License:
 
