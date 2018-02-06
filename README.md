@@ -171,13 +171,9 @@ Once an instance is set, we can call the neccessary http method needed.
 
 -----
 
-##### Sq_Connect: GET/DELETE methods
+#### Sq_Connect: GET/DELETE methods
 
 The **GET/DELETE** http methods only require the path to the requested Square API endpoint(s). 
-
-The Sq_Connect.get() method 
-
-See example.
 
 **Example**
 
@@ -195,7 +191,53 @@ self.connect.get('/v2/locations')
 
 In this example, this will return a json response object of all locations associated with the Square account. See the [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#navsection-locations) for more information about their endpoints. 
 
-For this application the **DELETE** method has only been used to delete customer information. This is explained further in the **Sq_Customer class**.  More info: [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-deletecustomer)
+For this application the **DELETE** method has only been used to delete customer information. 
+This is explained further in the **Sq_Customer class**.  More info: [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-deletecustomer)
+
+**NOTE:***
+
+There may be times that you may have to hardcode a path into your GET method to retrieve certain data/data types from the Square API. 
+
+For example if you wanted to search for a complete list of items in the store catalog, your path may look like this:
+
+```python
+self.connect.get('/v2/catalog/list?types=item')
+```
+See [Square Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-listcatalog) for more information
+---
+
+####  Sq_Connect: POST/PUT methods
+
+Similar in execution to the **GET/DELETE** methods, the **POST/PUT** methods require an additional parameter.
+
+```python
+from sqware.connect import Sq_Connect
+
+self.connect = Sq_Connect()
+
+self.connect.post(endpoint_path, data)
+
+```
+
+The **data** parameter accepts the json/dict data needed to be passed to the Square API. 
+
+```python
+
+from sqware.connect import Sq_Connect
+
+self.json_data = {
+					"given_name": "John",
+					"family_name": "Doe"
+				}
+
+self.connect = Sq_Connect()
+
+self.connect.post('/v2/customers', self.data)
+
+```
+
+
+---
 
 ## License:
 
