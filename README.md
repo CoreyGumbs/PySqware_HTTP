@@ -127,7 +127,7 @@ def __init__(self):
 
 #### Sq_Connect Instance
 
-In order to call the necessary endpoints, an instance of Sq_Connect is needed.
+In order to call the necessary http methods, an instance of Sq_Connect is needed.
 
 ```python
 from sqware.connect import Sq_Connect
@@ -137,7 +137,7 @@ self.connect = Sq_Connect()
 
 Once an instance is set, we can call the neccessary http method needed. 
 
-#####Sq_Connect: GET/DELETE
+##### Sq_Connect: GET/DELETE methods
 
 the GET/DELETE http methods only require the path to the requested Square API endpoint(s). See example.
 
@@ -147,6 +147,10 @@ the GET/DELETE http methods only require the path to the requested Square API en
 from sqware.connect import Sq_Connect
 
 self.connect = Sq_Connect()
+
+self.connect.get(endpoint_path)
+
+or
 
 self.connect.get('/v2/locations')
 ```
