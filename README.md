@@ -60,7 +60,7 @@ This method is used to parse the secrets.json file, retrieve desired setting, an
 
 
 #### Secrets.json 
-Thsi file is where you will store all sensitive data used for the Square API headers, module file storage directories, etc.
+This is the json file is where you will store all sensitive data used for the Square API headers, module file storage directories, etc.
 
 **Sample Structure**
 ```
@@ -72,6 +72,20 @@ Thsi file is where you will store all sensitive data used for the Square API hea
 ```
 **Note**: You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
 
+To access your settings from the secrets.json file, you can import and use the get_secrets() method found on secrets.py.
+
+This example uses the json sample from above.
+
+```
+from sqware.connect.secrets import get_secrets
+
+ACCESS_TOKEN = get_secrets('ACCESS_TOKEN') 
+LOCATION_ID = get_secrets('LOCATION_ID')
+
+```
+
+This will return the value of that setting to be used in headers, or other methods that may require sensitive data. 
+You will see a working example with the Sq_Connect class.
 
 #### Endpoints
 
