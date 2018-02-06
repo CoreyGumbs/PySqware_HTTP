@@ -46,8 +46,10 @@ to set-up once as well as protect your sensitive data.
 ##### Secrets.py
 There are two global variables : **BASE_DIR and  SECURITY KEY**
 
-`BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-security_key = os.path.join(BASE_DIR, 'secrets.json')`
+```
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SECURITY_KEY = os.path.join(BASE_DIR, 'secrets.json')
+```
 
 They are currently set to the **connect** module file path. Should you wish the 
 
