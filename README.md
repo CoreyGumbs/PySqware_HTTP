@@ -9,12 +9,12 @@ Any changes made to the Square Dashboard or POS system will reflect on the web a
 Square Business/Merchant Account needed before using.
 
 
-# Version 0.3.0
+## Version 0.3.0
 
 written using Python 3
 
 
-# Features
+## Features
 
 #### Recently Added Feature(s):
 + Added Customer module - CRUD module with sq_customer class for customers (create customer, check email, update customer, update email, delete account.)
@@ -25,7 +25,7 @@ written using Python 3
 
 
 
-# Connect - Sq_Connect Class
+## Connect - Sq_Connect Class
 
 
 #### Read First
