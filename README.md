@@ -44,7 +44,7 @@ to set-up once as well as protect your sensitive data.
 ##### Secrets.py
 There are two global variables : **BASE_DIR and  SECURITY KEY**
 
-```
+```python
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECURITY_KEY = os.path.join(BASE_DIR, 'secrets.json')
 ```
@@ -60,7 +60,7 @@ To use the **get_secrets()** refer below
 This is the json file is where you will store all sensitive data used for the Square API headers, module file storage directories, etc.
 
 **Sample Structure**
-```
+```json
 {
 	"ACCESS_TOKEN": [square access token goes here.],
 	"APPLICATION_ID": [square application id goes here.],
@@ -77,7 +77,7 @@ To access your settings from the secrets.json file, you can import and use the g
 
 This example uses the json sample from above.
 
-```
+```python
 from sqware.connect.secrets import get_secrets
 
 ACCESS_TOKEN = get_secrets('ACCESS_TOKEN') 
