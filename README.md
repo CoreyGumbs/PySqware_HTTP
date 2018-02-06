@@ -195,7 +195,7 @@ self.connect.get('/v2/locations')
 
 In this example, this will return a json response object of all locations associated with the Square account. See the [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#navsection-locations) for more information about their endpoints. 
 
-For this application the **DELETE** method has only been used to delete customer information. This is explained further in the **Sq_Customer class**. [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-deletecustomer)
+For this application the **DELETE** method has only been used to delete customer information. This is explained further in the **Sq_Customer class**.  More info: [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-deletecustomer)
 
 ## License:
 
