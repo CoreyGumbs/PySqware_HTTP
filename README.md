@@ -97,7 +97,10 @@ CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://doc
 
 #### Sensitive Data Handling - Square Access Token and Application ID
 
-In order to send data to the Square API, it requires a header that passes the square access token:[Get Started with Square.](https://docs.connect.squareup.com/articles/getting-started "Getting Started"). Without this header, all requests will return errors.
+In order to send data to the Square API, it requires a header that passes the square access token: [Get Started with Square](https://docs.connect.squareup.com/articles/getting-started "Getting Started").
+
+Without this header, all requests will return errors.
+
 To prevent this, the Sq_Connect class is set up to recieve all data from your secrets.json file via the get_secrets method.
 
 You can find the variables within the __init__ constructor method.
@@ -118,6 +121,13 @@ def __init__(self):
 ```
 
 **Note:** You may decided to change your json setting keys on the secrets.json file. If you do that make sure you update those setting keys within the __init__ method or an error will return.
+
+```python
+def __init__(self):
+		'''constructor for class'''
+		self.access_token = get_secrets('CHANGED_KEY')
+```
+
 
 
 
