@@ -35,7 +35,7 @@ the following square credentials:
 + Location(s) ID
 
 
-The Sq_Connect class utilizes the GET, POST, PUT, DELETE http methods through the Requests library. These methods conincide with the 
+The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
 CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://docs.connect.squareup.com/api/connect/v2#endpointnamesandreturnvalues "Endpoint Names and Return Values"). 
 
 
