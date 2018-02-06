@@ -69,7 +69,7 @@ This is the json file is where you will store all sensitive data used for the Sq
 ```
 **Note**: You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
 
-##### get_secrets(setting) method from Secrets.py
+#### get_secrets(setting) method from Secrets.py
 
 This method is used to parse the secrets.json file, retrieve desired setting, and returns value from json file.
 
