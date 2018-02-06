@@ -10,7 +10,6 @@ Square Business/Merchant Account needed before using.
 
 
 # Version 0.3.0
--------------
 
 written using Python 3
 
