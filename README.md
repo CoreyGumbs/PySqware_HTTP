@@ -13,6 +13,6 @@ written using Python 3
 + Added catalog module - catalog module collects and creates json data of categories and items from API. It also has a product module that allows items associated with a category_id to be returned for data manipulation.
 + Added Sq_Connect class with a connect_api function for connection to Square api.
 
-####License:
+#### License:
 
 This project is licensed under the MIT License.
