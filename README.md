@@ -88,6 +88,8 @@ LOCATION_ID = get_secrets('LOCATION_ID')
 This will return the value of that setting to be used in headers, or other methods that may require sensitive data. 
 You will see a working example with the Sq_Connect class.
 
+## Connect - Connection.py
+
 #### Endpoints
 
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
