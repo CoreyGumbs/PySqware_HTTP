@@ -14,8 +14,7 @@ Square Business/Merchant Account needed before using.
 written using Python 3
 
 
-Features
---------
+# Features
 
 #### Recently Added Feature(s):
 + Added Customer module - CRUD module with sq_customer class for customers (create customer, check email, update customer, update email, delete account.)
@@ -26,8 +25,8 @@ Features
 
 
 
-Connect - Sq_Connect Class
--------
+# Connect - Sq_Connect Class
+
 
 #### Read First
 ---------------
