@@ -249,7 +249,7 @@ There is a method in the Sq_Customer class that helps retrieve customer data wit
 self.customer_id = 'test_id_1'
 
 
-self.connect.post('/v2/customers/' + self.customer_id, self.json_data)
+self.connect.put('/v2/customers/' + self.customer_id, self.json_data)
 ```
 ---
 
