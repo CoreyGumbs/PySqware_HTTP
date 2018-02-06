@@ -9,7 +9,7 @@ Any changes made to the Square Dashboard or POS system will reflect on the web a
 Square Business/Merchant Account needed before using.
 
 
-Version 0.3.0
+# Version 0.3.0
 -------------
 
 written using Python 3
