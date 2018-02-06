@@ -62,8 +62,8 @@ This is the json file is where you will store all sensitive data used for the Sq
 **Sample Structure**
 ```json
 {
-	"ACCESS_TOKEN": [square access token goes here.],
-	"APPLICATION_ID": [square application id goes here.],
+	"ACCESS_TOKEN": "[square access token goes here.]",
+	"APPLICATION_ID": "[square application id goes here.]",
 	"LOCATION_ID": "[square store location goes here.]",
 }
 ```
