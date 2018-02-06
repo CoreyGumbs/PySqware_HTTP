@@ -24,7 +24,7 @@ Features
 + Added Sq_Connect class with a connect_api function for connection to Square api.
 
 
-Connect
+Connect - Sq_Connect Class
 -------
 If you have not created a square business account, please do so before continuing.
 The Connect class assumes that you have already set-up a square merchant account and have access to 
@@ -35,6 +35,8 @@ the following square credentials:
 + Location(s) ID
 
 
+The Sq_Connect class utilizes the GET, POST, PUT, DELETE http methods through the Requests library. These methods conincide with the 
+CRUD endpoints of the Square API: <https://docs.connect.squareup.com/api/connect/v2#endpointnamesandreturnvalues>. 
 
 
 
