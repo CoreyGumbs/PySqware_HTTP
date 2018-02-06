@@ -109,10 +109,6 @@ You can find the variables within the __init__ constructor method.
 def __init__(self):
 		'''constructor for class'''
 		self.access_token = get_secrets('ACCESS_TOKEN')
-		self.application_id = get_secrets('APPLICATION_ID')
-		#If multiple locations needed, add multiplelocation_id via incriments on secrets.json 
-		#(IE: location_id_2 = {{square location 2 ID}})
-		self.location_id = get_secrets('LOCATION_ID')
 		self.request_headers = {
 			'Authorization': 'Bearer ' + self.access_token,
 			'Accept':        'application/json',
@@ -129,7 +125,33 @@ def __init__(self):
 ```
 
 
+#### Sq_Connect Instance
 
+In order to call the necessary endpoints, an instance of Sq_Connect is needed.
+
+```python
+from sqware.connect import Sq_Connect
+
+self.connect = Sq_Connect()
+```
+
+Once an instance is set, we can call the neccessary http method needed. 
+
+#####Sq_Connect: GET/DELETE
+
+the GET/DELETE http methods only require the path to the requested Square API endpoint(s). See example.
+
+**Example**
+
+```python
+from sqware.connect import Sq_Connect
+
+self.connect = Sq_Connect()
+
+self.connect.get('/v2/locations')
+```
+
+In this example, this will return a json response object of all locations associated with the Square account. See the [Square API Documentation](https://docs.connect.squareup.com/api/connect/v2#navsection-locations) for more information about their endpoints. 
 
 ## License:
 
