@@ -124,6 +124,7 @@ def __init__(self):
 		self.access_token = get_secrets('CHANGED_KEY')
 ```
 
+----
 
 #### Sq_Connect Instance
 
@@ -137,9 +138,15 @@ self.connect = Sq_Connect()
 
 Once an instance is set, we can call the neccessary http method needed. 
 
+-----
+
 ##### Sq_Connect: GET/DELETE methods
 
-the GET/DELETE http methods only require the path to the requested Square API endpoint(s). See example.
+The **GET/DELETE** http methods only require the path to the requested Square API endpoint(s). 
+
+The Sq_Connect.get() method 
+
+See example.
 
 **Example**
 
