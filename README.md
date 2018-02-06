@@ -1,10 +1,8 @@
 # PySqware
 A simple module for the Django Framework to use with the Square API. 
 
-Rather than having to upload products into two seperate systems, users can use this program to 
-update web applications in real time as changes are madeto square accounts (IE: products, categories, etc.).
-
-Any changes made to the Square Dashboard or POS system will reflect on the web application in real time. 
+Rather than having to upload products into two seperate systems (DJango Admin/Square POS), users can use this program to 
+update web applications as changes are made to square (IE: products, categories, etc.) via the Square dashboard or POS.
 
 Square Business/Merchant Account needed before using.
 
