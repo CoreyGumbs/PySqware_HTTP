@@ -119,7 +119,7 @@ The **request_path** variable is provided by you when you create the Sq_Connect 
 The **headers** variable is set to the self.request_headers variable in the init constructor.  
 
 For the **GET** method, a **TIMEOUT** parameter is provided. You can change this to your desired limit. 
-This will end the connection at the set time if there are any connection hangups. See [Requests documentation](http://docs.python-requests.org/en/master/user/quickstart/#timeouts)for more information.
+This will end the connection at the set time if there are any connection hangups. See [Requests documentation](http://docs.python-requests.org/en/master/user/quickstart/#timeouts) for more information.
 
 Depending on which http method you use you may see the **json=data** parameter included.
 This for those methods that have to send json data to the Square API endpoint. See examples below.
