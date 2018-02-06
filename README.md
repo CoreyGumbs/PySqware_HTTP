@@ -8,10 +8,12 @@ Any changes made to the Square Dashboard or POS system will reflect on the web a
 
 Square Business/Merchant Account needed before using.
 
+
 Version 0.3.0
 -------------
 
 written using Python 3
+
 
 Features
 --------
@@ -22,6 +24,7 @@ Features
 #### Previously Added Feature(s):
 + Added catalog module - catalog module collects and creates json data of categories and items from API. It also has a product module that allows items associated with a category_id to be returned for data manipulation.
 + Added Sq_Connect class with a connect_api function for connection to Square api.
+
 
 
 Connect - Sq_Connect Class
@@ -42,6 +45,7 @@ CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://doc
 
 
 
-#### License:
+License:
+--------
 
 This project is licensed under the MIT License.
