@@ -26,14 +26,15 @@ Features
 
 Connect
 -------
-The Connect class assumes that you have already set-up a square merchant accounts and have access to 
+If you have not created a square business account, please do so before continuing.
+The Connect class assumes that you have already set-up a square merchant account and have access to 
 the following square credentials:
 
 + Access Token
 + Application ID 
 + Location(s) ID
 
-**If you have not created a square business account, please do so before continuing.**
+
 
 
 
