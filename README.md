@@ -67,7 +67,7 @@ This is the json file is where you will store all sensitive data used for the Sq
 	"LOCATION_ID": "[square store location goes here.]",
 }
 ```
-**Note**: You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
+**Note:** You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
 
 #### get_secrets(setting) method from Secrets.py
 
@@ -95,8 +95,27 @@ You will see a working example with the Sq_Connect class.
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
 CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://docs.connect.squareup.com/api/connect/v2#endpointnamesandreturnvalues "Endpoint Names and Return Values"). 
 
+####Sensitive Data
+In order to send data to the Square API, it requires a header that passes the square access token. Without this header, all requests will return errors.
+To prevent this, the Sq_Connect class is set up to recieve all data from your secrets.json file via the get_secrets method. \
+You can find the variables within the __init__ constructor method.
 
+```python
+def __init__(self):
+		'''constructor for class'''
+		self.access_token = get_secrets('ACCESS_TOKEN')
+		self.application_id = get_secrets('APPLICATION_ID')
+		#If multiple locations needed, add multiplelocation_id via incriments on secrets.json 
+		#(IE: location_id_2 = {{square location 2 ID}})
+		self.location_id = get_secrets('LOCATION_ID')
+		self.request_headers = {
+			'Authorization': 'Bearer ' + self.access_token,
+			'Accept':        'application/json',
+			'Content-Type':  'application/json'
+			}
+```
 
+**Note:** You may decided to change your json setting keys on the secrets.json file. If you do that make sure you update those setting keys within the __init__ method or an error will return.
 
 ## License:
 
