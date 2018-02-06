@@ -59,7 +59,7 @@ Just remember to assign the **SECURITY_KEY** file path to where you will be stor
 This method is used to parse the secrets.json file, retrieve desired setting, and returns value from json file. *See secrets.json below.*
 
 
-####Secrets.json 
+#### Secrets.json 
 Thsi file is where you will store all sensitive data used for the Square API headers, module file storage directories, etc.
 
 **Sample Structure**
@@ -70,7 +70,7 @@ Thsi file is where you will store all sensitive data used for the Square API hea
 	"LOCATION_ID": "[square store location goes here.]",
 }
 ```
-**Note**: You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2", etc.
+**Note**: You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2" : "value" 
 
 
 #### Endpoints
