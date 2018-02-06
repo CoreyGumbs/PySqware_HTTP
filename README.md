@@ -204,6 +204,7 @@ For example if you wanted to search for a complete list of items in the store ca
 self.connect.get('/v2/catalog/list?types=item')
 ```
 See [Square Documentation](https://docs.connect.squareup.com/api/connect/v2#endpoint-listcatalog) for more information
+
 ---
 
 ####  Sq_Connect: POST/PUT methods
