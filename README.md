@@ -95,9 +95,11 @@ You will see a working example with the Sq_Connect class.
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
 CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://docs.connect.squareup.com/api/connect/v2#endpointnamesandreturnvalues "Endpoint Names and Return Values"). 
 
-####Sensitive Data
-In order to send data to the Square API, it requires a header that passes the square access token. Without this header, all requests will return errors.
-To prevent this, the Sq_Connect class is set up to recieve all data from your secrets.json file via the get_secrets method. \
+#### Sensitive Data Handling - Square Access Token and Application ID
+
+In order to send data to the Square API, it requires a header that passes the square access token:[Get Started with Square.](https://docs.connect.squareup.com/articles/getting-started "Getting Started"). Without this header, all requests will return errors.
+To prevent this, the Sq_Connect class is set up to recieve all data from your secrets.json file via the get_secrets method.
+
 You can find the variables within the __init__ constructor method.
 
 ```python
@@ -116,6 +118,8 @@ def __init__(self):
 ```
 
 **Note:** You may decided to change your json setting keys on the secrets.json file. If you do that make sure you update those setting keys within the __init__ method or an error will return.
+
+
 
 ## License:
 
