@@ -38,6 +38,19 @@ the following square credentials:
 + Application ID 
 + Location(s) ID
 
+#### Secrets.py and Secrets.json
+Before you are able to use the Square API or Sq_Connect class, you have to first create your secrets.json file to use with the secrets.py file.
+Rather than hard coding your Access Token, Application ID, and Location ID headers everytime you send a request, these two files ensure that you only have
+to set-up once as well as protect your sensitive data.
+
+##### Secrets.py
+There are two global variables : **BASE_DIR and  SECURITY KEY**
+
+`BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+security_key = os.path.join(BASE_DIR, 'secrets.json')`
+
+They are currently set to the **connect** module file path. Should you wish the 
+
 #### Endpoints
 
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 

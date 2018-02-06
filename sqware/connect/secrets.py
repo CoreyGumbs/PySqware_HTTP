@@ -12,11 +12,11 @@ import json
 	
 #Global Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-security_key = os.path.join(BASE_DIR, 'secrets.json')
+SECURITY_KEY = os.path.join(BASE_DIR, 'secrets.json')
 
 def get_secrets(setting):
 	try:
-		with open(security_key) as f:
+		with open(SECURITY_KEY) as f:
 			secrets = json.loads(f.read())
 		return secrets[setting]
 	except KeyError:
