@@ -55,9 +55,22 @@ They are currently set to the **connect** module file path. You can change the f
 
 Just remember to assign the **SECURITY_KEY** file path to where you will be storing your secrets.json file.
 
-##### get_secrets(setting) and secrets.json
-This method is used to parse the secrets.json file, retrieve desired setting, and returns value from json file.
+###### get_secrets(setting)
+This method is used to parse the secrets.json file, retrieve desired setting, and returns value from json file. *See secrets.json below.*
 
+
+####Secrets.json 
+Thsi file is where you will store all sensitive data used for the Square API headers, module file storage directories, etc.
+
+**Sample Structure**
+```
+{
+	"ACCESS_TOKEN": [square access token goes here.],
+	"APPLICATION_ID": [square application id goes here.],
+	"LOCATION_ID": "[square store location goes here.]",
+}
+```
+**Note**: You may have more than one location you are using. Just create a new key such as "LOCATION_ID_2", etc.
 
 
 #### Endpoints
