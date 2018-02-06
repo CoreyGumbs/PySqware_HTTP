@@ -55,6 +55,11 @@ They are currently set to the **connect** module file path. You can change the f
 
 Just remember to assign the **SECURITY_KEY** file path to where you will be storing your secrets.json file.
 
+##### get_secrets(setting) and secrets.json
+This method is used to parse the secrets.json file, retrieve desired setting, and returns value from json file.
+
+
+
 #### Endpoints
 
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
