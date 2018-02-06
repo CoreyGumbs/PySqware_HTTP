@@ -237,7 +237,20 @@ self.connect.post('/v2/customers', self.data)
 
 ```
 
+**NOTE:**
 
+When using the **POST/PUT** methods, certain Square API endpoints may require the User's ID. You can either hard code (not recommended) 
+or assign/pass the ID to a variable and string it with the endpoint path.
+
+There is a method in the Sq_Customer class that helps retrieve customer data without hardcoding it.
+
+```python
+
+self.customer_id = 'test_id_1'
+
+
+self.connect.post('/v2/customers/' + self.customer_id, self.json_data)
+```
 ---
 
 ## License:
