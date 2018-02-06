@@ -105,6 +105,23 @@ You will see a working example with the Sq_Connect class.
 The Sq_Connect class utilizes the **GET, POST, PUT, DELETE** http methods through the Requests library. These methods conincide with the 
 CRUD endpoints of the Square API: [Endpoint Names and Return Values](https://docs.connect.squareup.com/api/connect/v2#endpointnamesandreturnvalues "Endpoint Names and Return Values"). 
 
+Within each class method you will find this variable:
+
+```python
+sq_connection = requests.get('https://connect.squareup.com' + request_path, headers = self.request_headers, timeout=3)
+```
+
+This is where all the work is done using the Requests library. The Square Connect http path is already hard coded 
+and should not be changed unless there has been a change to Square's API
+
+The **request_path** variable is provided by you when you create the Sq_Connect instance. See below.
+
+The **headers** variable is set to the self.request_headers variable in the init constructor.  
+
+For the **GET** method, a **TIMEOUT** parameter is provided. You can change this to your desired limit. This will end the connection at the set time if there are any connection hangups. See [Requests documentation](http://docs.python-requests.org/en/master/user/quickstart/#timeouts) for more information.
+
+Depending on which http method you use you 
+
 ---
 
 #### Sensitive Data Handling - Square Access Token and Application ID
