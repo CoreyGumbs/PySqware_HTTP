@@ -51,7 +51,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECURITY_KEY = os.path.join(BASE_DIR, 'secrets.json')
 ```
 
-They are currently set to the **connect** module file path. Should you wish the 
+They are currently set to the **connect** module file path. You can change the file path to your desired path.
+
+Just remember to assign the **SECURITY_KEY** file path to where you will be storing your secrets.json file.
 
 #### Endpoints
 
