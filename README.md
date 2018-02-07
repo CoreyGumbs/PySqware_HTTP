@@ -260,7 +260,7 @@ However, It does not retrieve items not associated with a particular category.
 
 --- 
 
-##Catalog - Catalog_Json.py
+## Catalog - Catalog_Json.py
 
 Catalog_Json.py contains two seperate classes that retrieve the json data from the Square API. 
 
