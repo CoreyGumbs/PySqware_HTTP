@@ -267,7 +267,7 @@ It consists of the **ItmJson Class** and the **CatalogJson Class**
 
 **Set-up**
 
-On the secrets.json file create and set your JSON_DIRECTORY key and path to where you want to store your json data.
+On the **secrets.json** file create and set your **JSON_DIRECTORY** key and path to where you want to store your json data.
 This is where the Items and Categories json data will be stored.
 
 ```json
@@ -275,7 +275,7 @@ This is where the Items and Categories json data will be stored.
 	"ACCESS_TOKEN": "[square access token goes here.]",
 	"APPLICATION_ID": "[square application id goes here.]",
 	"LOCATION_ID": "[square store location goes here.]",
-	"JSON_DIRECTORY": "/path/to/where/you/want/to/store/json/data"
+	**"JSON_DIRECTORY": "/path/to/where/you/want/to/store/json/data"**
 }
 ```
 
