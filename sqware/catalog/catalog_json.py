@@ -43,8 +43,7 @@ class ItmJson(object):
 		#set directory path
 		self.dir_name = Path(self.dir_path + 'json')
 		#tests if directory exists. creates new one if it doesnt.
-		while not self.dir_name.exists():
-			
+		while not self.dir_name.exists():	
 			self.dir_name.mkdir(parents=True, exist_ok=False)
 		else:
 			return self.dir_name.exists()
@@ -78,7 +77,6 @@ class ItmJson(object):
 		self.directory = self.__directory_check()
 		self.file_name = Path(self.dir_path +'json/items.json')
 		try:
-
 			if self.directory:
 				if self.file_name.exists():
 					with open(self.file_name, 'r') as json_file:

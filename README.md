@@ -46,7 +46,7 @@ to set-up once as well as protect your sensitive data.
 
 ---
 
-##### Secrets.py
+#### Secrets.py
 
 There are two global variables : **BASE_DIR and  SECURITY KEY**
 
@@ -252,7 +252,6 @@ self.customer_id = 'test_id_1'
 self.connect.put('/v2/customers/' + self.customer_id, self.json_data)
 ```
 
----
 
 ## Catalog
 
@@ -260,6 +259,33 @@ The Catalog module retrieves both categories and items associated with each indi
 However, It does not retrieve items not associated with a particular category.
 
 --- 
+
+##Catalog - Catalog_Json.py
+
+Catalog_Json.py contains two seperate classes that retrieve the json data from the Square API. 
+
+It consists of the **ItmJson Class** and the **CatalogJson Class**
+
+**Set-up**
+
+On the secrets.json file create and set your JSON_DIRECTORY key and path to where you want to store your json data.
+This is where the Items and Categories json data will be stored.
+
+```json
+{
+	"ACCESS_TOKEN": "[square access token goes here.]",
+	"APPLICATION_ID": "[square application id goes here.]",
+	"LOCATION_ID": "[square store location goes here.]",
+	"JSON_DIRECTORY": "/path/to/where/you/want/to/store/json/data"
+}
+```
+
+----
+
+#### ItmJson 
+
+
+---
 
 ## License:
 
