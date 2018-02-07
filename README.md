@@ -258,7 +258,6 @@ self.connect.put('/v2/customers/' + self.customer_id, self.json_data)
 The Catalog module retrieves both categories and items associated with each individual category from the Square API.
 However, It does not retrieve items not associated with a particular category.
 
---- 
 
 ## Catalog - Catalog_Json.py
 
