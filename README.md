@@ -275,13 +275,13 @@ This is where the Items and Categories json data will be stored.
 	"ACCESS_TOKEN": "[square access token goes here.]",
 	"APPLICATION_ID": "[square application id goes here.]",
 	"LOCATION_ID": "[square store location goes here.]",
-	**"JSON_DIRECTORY": "/path/to/where/you/want/to/store/json/data"**
+	"JSON_DIRECTORY": "/path/to/where/you/want/to/store/json/data"
 }
 ```
 
 ----
 
-#### ItmJson 
+#### Catalog_Json.py - ItmJson() 
 
 
 ---
